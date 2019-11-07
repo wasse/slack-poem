@@ -7,6 +7,10 @@
 
 # testing
 /coverage
+./storybook-static
+./.jest-test-results.json
+jest-test-results.json
+storybook-static
 
 # production
 /build
