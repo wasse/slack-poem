@@ -3,6 +3,8 @@ import './App.css';
 import 'bulma';
 import './assets/styles.scss';
 
+import Routes from './routes/Routes'
+import { Sidemenu } from './components/Sidemenu';
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
           </div>
         </div>
       </div>
-
+      <Sidemenu></Sidemenu>
+      <Routes></Routes>
     </div>
   );
 }
