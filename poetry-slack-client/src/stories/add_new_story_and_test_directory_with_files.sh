@@ -51,7 +51,7 @@ describe('"$name" Default ', () => {
 echo "import { storiesOf } from '@storybook/react';
 import { "$name"Default } from './"$name"';
 
-storiesOf('"dir"|"$name"', module)
+storiesOf('"$dir"|"$name"', module)
 .addParameters({ jest: ['"$name"'] })
 .add('Default', () => {
     return "$name"Default();
