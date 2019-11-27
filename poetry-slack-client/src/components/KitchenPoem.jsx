@@ -1,10 +1,12 @@
 import React from 'react'
 
-const KitchenPoem = () => (
-    <div>
-        <h2>Fridge Poem</h2>
+import 'bulma'
+
+export const KitchenPoem = () => (
+    <div className="column">
+        <h2 className="title">Fridge Poem</h2>
     
-        <h3>What is Fridge Poem?</h3>
+        <h3 className="subtitle">What is Fridge Poem?</h3>
     </div>
 )
 

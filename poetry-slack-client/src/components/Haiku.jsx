@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Haiku = () => (
-    <div>
-        <h2>Haiku</h2>
+import 'bulma'
+
+export const Haiku = () => (
+    <div className="column">
+        <h2 className="title">Haiku</h2>
     </div>
 )
 
