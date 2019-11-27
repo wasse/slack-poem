@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
+
+    <persistence-unit name="poetrydb">
+
+<!--        <provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+
+        <jta-data-source>java:/jdbc/postgres/poetrydb</jta-data-source>
+<!--        <non-jta-data-source>java:comp/env/Resource/poetryDbDatasourceUnmanaged</non-jta-data-source>-->
+<!--        Not required to put the entity classes here but can be useful in finding things that go wrong -->
+        <class>com.poetryslack.api.domain.HelloWorld</class>
+
+        <properties>
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+
+<!--            <property name="javax.persistence.schema-generation.database.action" value="create" />-->
+<!--            <property name="show_sql" value="true"/>-->
+
+        </properties>
+    </persistence-unit>
+</persistence>
+
+
+
+

@@ -1,0 +1,68 @@
+
+
+Step 1:
+Download and start postgres.
+https://www.postgresql.org/download/
+
+
+
+Step 2:
+Create a database called poetrydb.
+Url, username and password shoul be these:
+
+        jdbcUrl = jdbc:postgresql://localhost:5432/poetrydb
+        password = postgres
+        userName = postgres
+
+Two free postgres database managers:
+https://www.pgadmin.org/
+https://dbeaver.io/download/
+
+Useful psql commands:
+http://www.postgresqltutorial.com/psql-commands/
+
+
+
+Step 3:
+Run the app.
+
+mvn clean install tomee:run
+
+Or run the script "mvn-clean-install-buildtomee.sh" in the project root folder.
+
+
+
+Step 4:
+Try it out.
+API for the HelloWorld enpoints:
+
+GET
+http://localhost:8080/api/helloworld/testget
+output: Hello World
+
+
+CREATE
+http://localhost:8080/api/helloworld
+requestbody:
+    {
+        "hello": "Hello",
+        "world": "World"
+    }
+
+
+GET
+http://localhost:8080/api/helloworld
+returns: a list of all hello world objects in the database.
+Example:
+[
+  {
+    "hello": "Hello",
+    "id": 1,
+    "world": "World"
+  },
+  {
+    "hello": "Hello",
+    "id": 2,
+    "world": "World"
+  }
+]
