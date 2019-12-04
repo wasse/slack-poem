@@ -2,7 +2,7 @@ import React from 'react'
 
 import 'bulma'
 
-export const KitchenPoem = () => (
+const KitchenPoem = () => (
     <div className="column">
         <h2 className="title">Fridge Poem</h2>
     
