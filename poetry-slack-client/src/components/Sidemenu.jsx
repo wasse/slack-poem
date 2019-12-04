@@ -5,7 +5,7 @@ import 'bulma'
 
 // import { observer } from 'mobx-react'
 
-export const Sidemenu = () => {
+const Sidemenu = () => {
 
     let { url } = useRouteMatch()
 

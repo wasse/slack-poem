@@ -3,7 +3,7 @@ import 'bulma'
 
 import Button from './Button'
 
-export const Header = () => {
+const Header = () => {
   return (
     <div className="hero is-dark">
       <div className="contents is-centered">
@@ -20,5 +20,4 @@ export const Header = () => {
     </div>
   )
 }
-
 export default Header
