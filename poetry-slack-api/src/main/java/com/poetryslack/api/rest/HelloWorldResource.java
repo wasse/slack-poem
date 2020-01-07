@@ -2,6 +2,7 @@ package com.poetryslack.api.rest;
 
 import com.poetryslack.api.domain.HelloWorld;
 import com.poetryslack.api.services.HelloWorldManagementServiceLocal;
+import io.swagger.annotations.Api;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Stateless
 @Path("/helloworld")
+@Api("helloworld")
 public class HelloWorldResource {
 
     /*

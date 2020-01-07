@@ -1,4 +1,5 @@
 com\poetryslack\api\rest\JAXRSConfiguration.class
+com\poetryslack\api\rest\HaikuResource.class
 com\poetryslack\api\domain\HelloWorld.class
 com\poetryslack\api\rest\HelloWorldResource.class
 com\poetryslack\api\services\HelloWorldManagementServiceImplementation.class

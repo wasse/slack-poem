@@ -12,7 +12,6 @@ import java.util.List;
 @Stateless
 public class HelloWorldDataAccessImplementation implements  HelloWorldDataAccess {
 
-
     @PersistenceContext(unitName = "poetrydb")
     private EntityManager em;
 

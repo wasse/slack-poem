@@ -68,6 +68,74 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.phillip-kruger</groupId>
+      <artifactId>apiee-core</artifactId>
+      <version>1.0.8</version>
+    </dependency>
+
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>io.swagger</groupId>-->
+<!--      <artifactId>swagger-jaxrs</artifactId>-->
+<!--      <version>1.6.0</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/swagger-ui &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.webjars</groupId>-->
+<!--      <artifactId>swagger-ui</artifactId>-->
+<!--      <version>3.24.3</version>-->
+<!--    </dependency>-->
+
+<!--SWAGGER-->
+<!--    <dependency>-->
+<!--      <groupId>io.swagger</groupId>-->
+<!--      <artifactId>swagger-jaxrs</artifactId>-->
+<!--&lt;!&ndash;      <version>1.5.3</version>&ndash;&gt;-->
+<!--      <exclusions>-->
+<!--        &lt;!&ndash; API are useless since in javaee-api &ndash;&gt;-->
+<!--        <exclusion>-->
+<!--          <groupId>javax.ws.rs</groupId>-->
+<!--          <artifactId>jsr311-api</artifactId>-->
+<!--        </exclusion>-->
+<!--        <exclusion>-->
+<!--          <groupId>javax.validation</groupId>-->
+<!--          <artifactId>validation-api</artifactId>-->
+<!--        </exclusion>-->
+<!--        &lt;!&ndash; not useful for the GUI -> only json for us &ndash;&gt;-->
+<!--        <exclusion>-->
+<!--          <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+<!--          <artifactId>jackson-dataformat-xml</artifactId>-->
+<!--        </exclusion>-->
+<!--        <exclusion>-->
+<!--          <groupId>com.fasterxml.jackson.datatype</groupId>-->
+<!--          <artifactId>jackson-datatype-joda</artifactId>-->
+<!--        </exclusion>-->
+<!--        &lt;!&ndash; we don't use reflections so no need of javassist &ndash;&gt;-->
+<!--        <exclusion>-->
+<!--          <groupId>org.javassist</groupId>-->
+<!--          <artifactId>javassist</artifactId>-->
+<!--        </exclusion>-->
+<!--        <exclusion>-->
+<!--          <groupId>org.reflections</groupId>-->
+<!--          <artifactId>reflections</artifactId>-->
+<!--        </exclusion>-->
+<!--        &lt;!&ndash; we'll reuse the container one or add an impl as well to your app &ndash;&gt;-->
+<!--        <exclusion>-->
+<!--          <groupId>org.slf4j</groupId>-->
+<!--          <artifactId>slf4j-api</artifactId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
+
+
+
+    <!--    <dependency>-->
+<!--      <groupId>org.webjars</groupId>-->
+<!--      <artifactId>swagger-ui</artifactId>-->
+<!--&lt;!&ndash;      <version>2.1.8-M1</version>&ndash;&gt;-->
+<!--    </dependency>-->
+
   </dependencies>
 
   <build>

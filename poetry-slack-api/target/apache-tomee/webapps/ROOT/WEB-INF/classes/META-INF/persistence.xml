@@ -12,7 +12,6 @@
         <class>com.poetryslack.api.domain.HelloWorld</class>
 
         <properties>
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
 
 <!--            <property name="javax.persistence.schema-generation.database.action" value="create" />-->

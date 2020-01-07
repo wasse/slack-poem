@@ -10,10 +10,31 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-<resource-ref>
-    <description>postgreSQL Datasource example</description>
-    <res-ref-name>jdbc/postgres</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-</resource-ref>
+
+<!--    <servlet>-->
+<!--        <servlet-name>swagger</servlet-name>-->
+<!--        <servlet-class>io.swagger.jaxrs.config.DefaultJaxrsConfig</servlet-class>-->
+<!--        <init-param>-->
+<!--            <param-name>api.version</param-name>-->
+<!--            <param-value>${project.version}</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>swagger.api.basepath</param-name>-->
+<!--            <param-value>http://localhost:8080/app/api</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>swagger.api.title</param-name>-->
+<!--            <param-value>My Awesome API</param-value>-->
+<!--        </init-param>-->
+<!--        <load-on-startup>1</load-on-startup>-->
+<!--    </servlet>-->
+
+    <resource-ref>
+        <description>postgreSQL Datasource example</description>
+        <res-ref-name>jdbc/postgres</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+
 </web-app>
