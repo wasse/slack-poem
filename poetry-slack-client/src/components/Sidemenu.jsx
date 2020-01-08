@@ -15,7 +15,8 @@ const Sidemenu = () => {
             <ul className="menu-list">
                 <Link to="/home">Home</Link>
                 <Link to={`${url}/kitchen-poem`}>Kitchen Poem</Link>
-                <li><Link to={`${url}/haiku`}>Haiku</Link></li>
+                <Link to={`${url}/haiku`}>Haiku</Link>
+                <Link to={`${url}/acrotic`}>Acrotic Poem</Link>
             </ul>
         </aside>
         </div>
