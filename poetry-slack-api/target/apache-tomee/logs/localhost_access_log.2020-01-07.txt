@@ -1,4 +1,0 @@
-0:0:0:0:0:0:0:1 - - [07/Jan/2020:00:00:14 +0100] "GET /api/helloworld HTTP/1.1" 200 12
-0:0:0:0:0:0:0:1 - - [07/Jan/2020:00:00:46 +0100] "POST /api/helloworld HTTP/1.1" 201 -
-0:0:0:0:0:0:0:1 - - [07/Jan/2020:00:00:55 +0100] "GET /api/helloworld/testget HTTP/1.1" 200 11
-0:0:0:0:0:0:0:1 - - [07/Jan/2020:00:01:16 +0100] "GET /api/helloworld HTTP/1.1" 200 59
