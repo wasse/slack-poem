@@ -7,20 +7,23 @@ More variables to override here: https://bulma.io/documentation/customize/variab
 @charset "utf-8";
 
 /* Import a Google Font */
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+// @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+// @import url("https://fonts.googleapis.com/css?family=Lato");
+// @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif");
 
 /* Set your brand colors */
-$purple: #8A4D76;
-$pink: #FA7C91;
+$purple: #8a4d76;
+$pink: #fa7c91;
 $brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
 
 /* Update Bulma's global variables */
 $family-sans-serif: "Nunito", sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
-$primary:rgb(182, 62, 41);
+$primary: rgb(182, 62, 41);
 $link: $brown;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
@@ -41,5 +44,3 @@ $input-shadow: none;
 @import "../../node_modules/bulma/sass/components/navbar.sass";
 @import "../../node_modules/bulma/sass/layout/hero.sass";
 @import "../../node_modules/bulma/sass/layout/section.sass";
-
-
