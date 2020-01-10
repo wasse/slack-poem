@@ -45,7 +45,7 @@ const GetConversations = () => {
             headers: { //'Accept': 'application/x-www-form-urlencoded',
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-            body: JSON.stringify({ text : "Det är grått!" }),
+            body: JSON.stringify({ text : "Good day!" }),
             // body: { token: 'A0A3DTWCWm7hsjk9y9qDIoJ4',
             //         channel: 'CPSQPDN3V',
             //         text: "Hej! Jag mår bra, tack!"
