@@ -1,6 +1,6 @@
 import React from 'react'
-
-import 'bulma'
+import styles from './Haiku.module.scss'
+// import 'bulma'
 
 const Haiku = () => (
    <div className="column">
