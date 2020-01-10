@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom'
 
 import About from '../components/About'
 import KitchenPoem from './../components/KitchenPoem'
@@ -8,8 +8,7 @@ import Haiku from './../components/Haiku'
 import AcroticPoem from './../components/AcroticPoem'
 
 function Routes() {
-
-    let { url } = useRouteMatch()
+   let { url } = useRouteMatch()
 
     return (
         // <div className="column is-two-third">
