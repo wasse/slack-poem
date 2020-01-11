@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { Header } from '../components/Header'
-import Sidemenu from '../components/Sidemenu'
+import Sidemenu from '../components/Sidemenu/Sidemenu'
 import BasePageRoutes from '../routes/BasePageRoutes'
 import About from '../components/About'
 import { observer } from 'mobx-react'

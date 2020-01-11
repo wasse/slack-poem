@@ -11,7 +11,6 @@ function Routes() {
    return (
       <>
          <Switch>
-            {/* <Route path={`${url}/home`} component={About} /> */}
             <Route path={`${url}/about`} component={About} />
             <Route path={`${url}/kitchen-poem`} component={KitchenPoem} />
             <Route path={`${url}/haiku`} component={Haiku} />

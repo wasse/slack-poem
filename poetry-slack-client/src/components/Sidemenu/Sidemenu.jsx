@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 import styles from './Sidemenu.module.scss'
-import { useStores } from '../custom-hooks/use-stores'
+import { useStores } from '../../custom-hooks/use-stores'
 
 const Sidemenu = () => {
    let { url } = useRouteMatch()
