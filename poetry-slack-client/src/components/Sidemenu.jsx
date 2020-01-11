@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 import styles from './Sidemenu.module.scss'
-
-import 'bulma'
-
-// import { observer } from 'mobx-react'
+import { useStores } from '../custom-hooks/use-stores'
 
 const Sidemenu = () => {
    let { url } = useRouteMatch()
 
+   const { session } = useStores()
+   const handleClick = () => {
+      session.actions.setIsHomePage(false)
+   }
    return (
       <div
          className={
@@ -17,16 +18,16 @@ const Sidemenu = () => {
       >
          <aside className={styles.menu + ' menu has-background-white'}>
             <ul className="menu-list">
-               <li className={styles.listitem}>
+               <li className={styles.listitem} onClick={() => handleClick()}>
                   <Link to={`${url}/about`}>About</Link>
                </li>
-               <li className={styles.listitem}>
+               <li className={styles.listitem} onClick={() => handleClick()}>
                   <Link to={`${url}/kitchen-poem`}>Kitchen Poem</Link>
                </li>
-               <li className={styles.listitem}>
+               <li className={styles.listitem} onClick={() => handleClick()}>
                   <Link to={`${url}/haiku`}>Haiku</Link>
                </li>
-               <li className={styles.listitem}>
+               <li className={styles.listitem} onClick={() => handleClick()}>
                   <Link to={`${url}/acrostic`}>Acrostic Poem</Link>
                </li>
             </ul>

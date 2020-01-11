@@ -1,23 +1,24 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import SecureRoute from './SecureRoute'
-import BasePage from './../pages/BasePage'
-import isAuthenticated from '../authentication-authorization/Auth'
+import { BasePage } from './../pages/BasePage'
+import Auth from '../auth/Auth'
 import { Login } from '../pages'
+import { useStores } from '../custom-hooks/use-stores'
+import { observer } from 'mobx-react'
 
-function Routes() {
+export const Routes = observer(() => {
+   const { session } = useStores()
    return (
       <>
          <Switch>
             <Route exact path="/" component={Login} />
             <SecureRoute
                path="/home"
-               auth={isAuthenticated()}
+               auth={session.data.isAuthenticated}
                component={BasePage}
             />
          </Switch>
       </>
    )
-}
-
-export default Routes
+})

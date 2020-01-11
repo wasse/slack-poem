@@ -2,10 +2,14 @@ import React from 'react'
 import { Button } from '../../components'
 import { Link } from 'react-router-dom'
 import styles from './Login.module.scss'
+import { observer } from 'mobx-react'
+import { useStores } from '../../custom-hooks/use-stores'
 
-import { login } from '../../authentication-authorization/Auth'
-
-function Login(props) {
+const Login = observer(props => {
+   const { session } = useStores()
+   function handleClick() {
+      session.actions.toggleAuth(true)
+   }
    return (
       <div>
          <div className="hero is-primary is-size-1">
@@ -30,8 +34,8 @@ function Login(props) {
                <p className="has-text-centered">
                   <Link to={`/home`}>
                      <Button
+                        onClick={() => handleClick()}
                         className="button is-primary is-uppercase"
-                        onClick={login()}
                         children={
                            'Temporary sign in button. Redirects to /home'
                         }
@@ -59,8 +63,8 @@ function Login(props) {
                </div>
             </div>
          </div>
+         {/* <p className="title">{session.session.isAuthenticated.toString()}</p> */}
       </div>
    )
-}
-
+})
 export default Login

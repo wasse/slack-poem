@@ -16,10 +16,12 @@ const SecureRoute = ({ component: Component, auth, ...other }) => {
 }
 
 SecureRoute.propTypes = {
-   component: PropTypes.func.isRequired,
-   //   auth: PropTypes.func.isRequired
+   // component: PropTypes.func.isRequired,
+   auth: PropTypes.bool.isRequired,
 }
 
-SecureRoute.defaultProps = {}
+SecureRoute.defaultProps = {
+   auth: false,
+}
 
 export default SecureRoute
