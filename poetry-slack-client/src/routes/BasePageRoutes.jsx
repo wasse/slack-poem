@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import About from '../components/About'
-import KitchenPoem from './../components/KitchenPoem'
+import KitchenPoem from '../features/KitchenPoem/KitchenPoem'
 import Haiku from '../features/Haiku'
 import AcrosticPoem from '../components/AcrosticPoem'
 
