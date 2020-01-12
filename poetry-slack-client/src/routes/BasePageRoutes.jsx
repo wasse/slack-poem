@@ -3,7 +3,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import About from '../components/About'
 import KitchenPoem from '../features/KitchenPoem/KitchenPoem'
 import Haiku from '../features/Haiku'
-import AcrosticPoem from '../components/AcrosticPoem'
+import AcrosticPoem from '../features/Acrostic/AcrosticPoem'
 
 function Routes() {
    let { url } = useRouteMatch()

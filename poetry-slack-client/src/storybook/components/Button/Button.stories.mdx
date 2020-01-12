@@ -1,0 +1,41 @@
+import { storiesOf } from '@storybook/react'
+import { ButtonDefault } from './Button'
+import { boolean, text } from '@storybook/addon-knobs'
+import { Button } from '../../../components'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+
+<Meta title="Components|Button" component={Button} />
+
+# Button
+
+## General button designs for the application
+
+### With primary color option
+
+<Preview withToolbar>
+   <Story name="Primary">
+      <Button
+         className={'button is-primary is-large'}
+         children={text('children', 'Adjust this text with knobs')}
+         defaultText={'Default text'}
+         disabled={boolean('Disable', false)}
+      />
+   </Story>
+</Preview>
+
+### Another variation of styling
+
+<Preview withToolbar>
+   <Story name="Rounded">
+      <Button
+         className={'button is-rounded is-link is-medium'}
+         children={text('children', 'Adjust this text with knobs')}
+         defaultText={'Default text'}
+         disabled={boolean('Disable', false)}
+      />
+   </Story>
+</Preview>
+
+## Props
+
+<Props of={Button} />

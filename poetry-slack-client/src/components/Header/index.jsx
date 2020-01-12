@@ -1,12 +1,12 @@
 import React from 'react'
 import 'bulma'
 import { observer } from 'mobx-react'
-import { useStores } from '../custom-hooks/use-stores'
+import { useStores } from '../../custom-hooks/use-stores'
 import { Link } from 'react-router-dom'
 
-import Button from './Button'
+import Button from '../Button'
 
-export const Header = observer(() => {
+const Header = observer(() => {
    const { session } = useStores()
 
    return (
@@ -36,3 +36,4 @@ export const Header = observer(() => {
       </div>
    )
 })
+export default Header

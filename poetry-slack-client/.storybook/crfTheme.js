@@ -1,18 +1,14 @@
-import { create } from '@storybook/theming';
-
+import { create, darken } from '@storybook/theming'
 
 export default create({
-    brandTitle: "Poetry-slack components",
-    // colorSecondary: "#faa541",
-    // appContentBg: 'white',
-    // appContentBg: '#303030',
-    base: 'dark',
-    // brandImage: logo,
-    // brandUrl: 'https://www.sileokapital.com/',
-    textColor: 'silver',
-    textInverseColor: 'rgba(255,255,255,0.9)',
-});
-
+   brandTitle: 'Poetry-Slack component library',
+   // colorSecondary: "#faa541",
+   // appContentBg: 'white',
+   // appContentBg: '#303030',
+   base: 'light',
+   textColor: 'black',
+   textInverseColor: 'rgba(255, 255, 255, 0.9)',
+})
 
 /**
  *These are the default settings.

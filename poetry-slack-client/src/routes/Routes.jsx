@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import SecureRoute from './SecureRoute'
-import { BasePage } from './../pages/BasePage'
+import BasePage from './../pages/BasePage'
 import Auth from '../auth/Auth'
 import { Login } from '../pages'
 import { useStores } from '../custom-hooks/use-stores'

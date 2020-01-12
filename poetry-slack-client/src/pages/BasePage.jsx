@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useRouteMatch } from 'react-router-dom'
-import { Header } from '../components/Header'
+import Header from '../components/Header'
 import Sidemenu from '../components/Sidemenu/Sidemenu'
 import BasePageRoutes from '../routes/BasePageRoutes'
 import About from '../components/About'
 import { observer } from 'mobx-react'
 import { useStores } from '../custom-hooks/use-stores'
 
-export const BasePage = observer(() => {
+const BasePage = observer(() => {
    const { session } = useStores()
    return (
       <div>
@@ -20,3 +20,4 @@ export const BasePage = observer(() => {
       </div>
    )
 })
+export default BasePage
