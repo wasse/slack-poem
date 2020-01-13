@@ -29,7 +29,7 @@ const Modal = ({ showCard, hide, title, children }) =>
                <div className="content">{children}</div>
             </section>
             <footer className="modal-card-foot">
-               <button>Done</button>
+               <button>Choose</button>
                <button onClick={hide}>Cancel</button>
             </footer>
          </div>
