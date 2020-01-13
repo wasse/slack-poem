@@ -1,0 +1,16 @@
+@import '../../assets/styles.scss';
+
+.ancestor {
+   background-color: $beige-lighter;
+   border-radius: 1rem;
+}
+
+.parent {
+   padding: 0px;
+   margin: 0px;
+}
+
+.child {
+   // height: 100%;
+   padding: 3rem;
+}

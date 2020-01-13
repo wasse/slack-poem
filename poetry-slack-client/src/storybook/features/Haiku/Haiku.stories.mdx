@@ -1,0 +1,24 @@
+import { storiesOf } from '@storybook/react'
+import { boolean, text } from '@storybook/addon-knobs'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import Haiku from '../../../features/Haiku'
+
+<Meta title="features|Haiku" component={Haiku} />
+
+# Haiku feature
+
+## Generates a poem from the chosen channels etc. in the users connected slack workspace
+
+### Clicking the genereate button reveals a modal with a form. The generated Haiku will be presented in the tile to the right. Here you can choose if you want to save the haiku or try again.
+
+### If you want to save it, an input is revealed and a save button. The input should contain the title of the haiku before you save.
+
+<Preview withToolbar>
+   <Story name="Primary">
+      <Haiku />
+   </Story>
+</Preview>
+
+## Props
+
+<Props of={Haiku} />

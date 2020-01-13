@@ -2,12 +2,12 @@ import { observable, action, computed } from 'mobx'
 
 const SessionStore = {
    data: observable({
-      isAuthenticated: false,
+      isAuthenticated: true,
       isHomePage: true,
    }),
    actions: {
       toggleAuth: action(auth => {
-         SessionStore.data.isAuthenticated = auth
+         // SessionStore.data.isAuthenticated = auth
       }),
       setIsHomePage: action(home => {
          SessionStore.data.isHomePage = home

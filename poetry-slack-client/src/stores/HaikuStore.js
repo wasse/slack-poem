@@ -2,11 +2,20 @@ import { observable, action, computed } from 'mobx'
 
 const HaikuStore = {
    data: observable({
-      poem: 'Write something here',
+      haiku: [
+         'Delightful display',
+         'Snowdrops bow their pure white heads',
+         "To the sun's glory",
+      ],
+      // haiku: [],
+      title: '',
    }),
    actions: {
-      setPoem: action(poem => {
-         HaikuStore.data.poem = poem.toUpperCase()
+      setPoem: action(haiku => {
+         HaikuStore.data.haiku = haiku
+      }),
+      setTitle: action(title => {
+         HaikuStore.data.title = title
       }),
    },
    computed: {},

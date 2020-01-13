@@ -21,7 +21,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
    className: '',
-   defaultText: '...',
+   defaultText: 'Default button text',
    disabled: false,
 }
 

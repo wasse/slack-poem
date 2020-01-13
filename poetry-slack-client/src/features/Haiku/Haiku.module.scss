@@ -1,4 +1,56 @@
 @import '../../assets/styles.scss';
 
+.dropdownmenu {
+   margin: auto;
+}
+
+.dropdowncontent {
+   padding-bottom: 1.8rem;
+   padding-top: 1.8rem;
+   margin-right: auto;
+   margin-left: auto;
+   padding-left: 5rem;
+   padding-right: 5rem;
+}
+
+.dropdownfield {
+   width: 17rem;
+}
+
+.dropdowninput {
+   margin-top: 0.7rem;
+}
+
 .button {
+   margin: auto;
+   margin-top: 2rem;
+   font-weight: lighter;
+}
+
+.submitbutton {
+   text-align: center;
+   margin: auto;
+}
+.dropdownbutton {
+   margin: auto;
+   border: none;
+   text-align: left;
+}
+
+.haikumessage {
+   text-align: left;
+   font-family: 'Merienda One', cursive;
+   border: 0.7rem solid $brown;
+   padding: 1rem;
+   div {
+      margin-top: 0.7rem;
+      margin-bottom: 0.7rem;
+   }
+}
+
+.icon {
+   margin-left: 1rem;
+   margin-right: 0.5rem;
+   margin-top: auto;
+   color: $brown;
 }

@@ -1,0 +1,22 @@
+import { storiesOf } from '@storybook/react'
+import { boolean, text } from '@storybook/addon-knobs'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { SaveDropDown } from '../../../features'
+
+<Meta title="components|SaveDropDown" component={SaveDropDown} />
+
+# SaveDropDown
+
+## Dropdown menu for Haiku feature
+
+### Dropdown menu contains options for saving and adding a title
+
+<Preview withToolbar>
+   <Story name="default">
+      <SaveDropDown />
+   </Story>
+</Preview>
+
+## Props
+
+<Props of={SaveDropDown} />

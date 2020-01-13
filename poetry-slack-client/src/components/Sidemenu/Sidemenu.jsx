@@ -17,7 +17,7 @@ const Sidemenu = () => {
          }
       >
          <aside className={styles.menu + ' menu has-background-white'}>
-            <ul className="menu-list">
+            <ul className={styles.ul + ' menu-list'}>
                <li className={styles.listitem} onClick={() => handleClick()}>
                   <Link to={`${url}/about`}>About</Link>
                </li>

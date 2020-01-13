@@ -10,7 +10,9 @@ More variables to override here: https://bulma.io/documentation/customize/variab
 // @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
 // @import url("https://fonts.googleapis.com/css?family=Lato");
 // @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");
-@import url("https://fonts.googleapis.com/css?family=Noto+Serif");
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
+@import url('https://fonts.googleapis.com/css?family=Merienda+One&display=swap');
 
 /* Set your brand colors */
 $purple: #8a4d76;
@@ -20,11 +22,11 @@ $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 
 /* Update Bulma's global variables */
-$family-sans-serif: "Nunito", sans-serif;
+$family-sans-serif: 'Nunito', sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: rgb(182, 62, 41);
-$link: $brown;
+$link: $primary;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
@@ -35,12 +37,12 @@ $input-border-color: transparent;
 $input-shadow: none;
 
 /* Import only what you need from Bulma */
-@import "../../node_modules/bulma/sass/utilities/_all.sass";
-@import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/elements/button.sass";
-@import "../../node_modules/bulma/sass/elements/container.sass";
-@import "../../node_modules/bulma/sass/elements/title.sass";
-@import "../../node_modules/bulma/sass/form/_all.sass";
-@import "../../node_modules/bulma/sass/components/navbar.sass";
-@import "../../node_modules/bulma/sass/layout/hero.sass";
-@import "../../node_modules/bulma/sass/layout/section.sass";
+@import '../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../node_modules/bulma/sass/base/_all.sass';
+@import '../../node_modules/bulma/sass/elements/button.sass';
+@import '../../node_modules/bulma/sass/elements/container.sass';
+@import '../../node_modules/bulma/sass/elements/title.sass';
+@import '../../node_modules/bulma/sass/form/_all.sass';
+@import '../../node_modules/bulma/sass/components/navbar.sass';
+@import '../../node_modules/bulma/sass/layout/hero.sass';
+@import '../../node_modules/bulma/sass/layout/section.sass';
