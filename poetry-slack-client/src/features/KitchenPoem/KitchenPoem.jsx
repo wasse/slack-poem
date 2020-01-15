@@ -23,7 +23,7 @@ const KitchenPoem = () => {
             showCard={showCard}
             hide={toggleModal}
             title={'Choose a Channel'}
-            getWords={getWords}
+            // getWords={getWords}
          >
             <KitchenPoemStart />
          </Modal>
