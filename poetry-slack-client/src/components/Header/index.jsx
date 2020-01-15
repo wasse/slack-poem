@@ -3,7 +3,6 @@ import 'bulma'
 import { observer } from 'mobx-react'
 import { useStores } from '../../custom-hooks/use-stores'
 import { Link } from 'react-router-dom'
-
 import Button from '../Button'
 
 const Header = observer(() => {
@@ -29,7 +28,7 @@ const Header = observer(() => {
                <Button
                   className="button"
                   children="Log Out"
-                  onClick={() => session.actions.toggleAuth(false)}
+                  onClick={() => session.actions.setIsAuthenticated(false)}
                ></Button>
             </div>
          </div>

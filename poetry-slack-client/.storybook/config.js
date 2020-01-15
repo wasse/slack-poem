@@ -19,6 +19,11 @@ import StoryRouter from 'storybook-react-router'
 // theme for storybook ui. adds parameters globally in stories
 import crfTheme from './crfTheme'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fab, fas)
+
 addParameters({
    options: {
       theme: crfTheme,

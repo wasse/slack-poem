@@ -58,5 +58,6 @@
       "@testing-library/react": "^9.4.0",
       "react-addons-test-utils": "^15.6.2",
       "storybook-react-router": "^1.0.8"
-   }
+   },
+   "proxy": "http://localhost:8080"
 }
