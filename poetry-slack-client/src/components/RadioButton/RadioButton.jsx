@@ -1,9 +1,8 @@
 import React from 'react'
 
 import RadioButtonSelect from './RadioButtonSelect'
-import { is } from '@babel/types'
 
-const Button = ({ label, value, selectedValue, onChange, name, valueName, isSelected }) => 
+const RadioButton = ({ value, selectedValue, onChange, name, valueName, isSelected }) => 
     isSelected ? (
         <label className="radio">
             <input 
@@ -26,4 +25,4 @@ const Button = ({ label, value, selectedValue, onChange, name, valueName, isSele
         </label>
     )
 
-export default Button
+export default RadioButton
