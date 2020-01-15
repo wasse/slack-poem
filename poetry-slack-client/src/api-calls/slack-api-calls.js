@@ -55,11 +55,11 @@ export const fetchAndSetAccessToken = () => {
 //      const postMessageInChannelURI =
 //         'https://slack.com/api/chat.postMessage'
 //      // Header:
-//      // Authorization Bearer xoxp-807524400866-819853948532-819879882513-f05ca84c563f452602b3d0ffa66dad30
+//      // Authorization Bearer (token)
 //      // Content - Type application/json
 //      // BODY:
 //      // {
-//      // 	"text": "Det fungerar!!!!",
+//      // 	"text": "Hello World!",
 //      // 	"channel": "CPSQPDN3V",
 //      // 	"as_user": true
 //      // }
