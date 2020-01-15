@@ -4,21 +4,16 @@ import clsx from 'clsx'
 import { useStores } from '../../../custom-hooks/use-stores'
 import { observer } from 'mobx-react'
 
+const styledDropDownMenuContent = clsx(
+   'dropdown-content',
+   styles.dropdowncontent
+)
+const styledField = clsx('field', styles.dropdownfield)
+const styledInput = clsx('dropdown-item input is-primary', styles.dropdowninput)
+const styledSubmit = clsx('dropdown-item', styles.submitbutton)
+
 const DropDownContent = observer(props => {
    const { haiku } = useStores()
-
-   const styledDropDownMenuContent = clsx(
-      'dropdown-content',
-      styles.dropdowncontent
-   )
-   const styledField = clsx('field', styles.dropdownfield)
-   const styledInput = clsx(
-      'dropdown-item input is-primary',
-      styles.dropdowninput
-   )
-   const styledSubmit = clsx('dropdown-item', styles.submitbutton)
-
-   const disabled = !haiku.data.title.length
 
    const handleChange = e => {
       haiku.actions.setTitle(e.target.value)
@@ -43,7 +38,7 @@ const DropDownContent = observer(props => {
             <div className={styledSubmit}>
                <button
                   type="submit"
-                  disabled={disabled}
+                  disabled={!haiku.data.title.length}
                   className="button is-primary"
                >
                   Submit
@@ -54,11 +49,3 @@ const DropDownContent = observer(props => {
    )
 })
 export default DropDownContent
-
-// const handleChange = e => {
-//    haiku.actions.setPoem(e.target.value)
-// }
-// <form action="">
-//    <input type="text" value={poem} onChange={e => handleChange(e)} />
-// </form>
-// <h1>{poem}</h1>

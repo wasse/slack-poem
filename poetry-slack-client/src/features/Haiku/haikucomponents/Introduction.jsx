@@ -20,7 +20,8 @@ const Introduction = observer((...other) => {
                rules, but entertaining nonetheless.
             </p>
             <p>
-               What will the # random channel look like as a haiku this time?
+               The channel/channels/conversations you choose will set the tone
+               of the poem.
             </p>
             <p className="content is-bold">
                "A traditional Japanese haiku is a three-line poem with seventeen

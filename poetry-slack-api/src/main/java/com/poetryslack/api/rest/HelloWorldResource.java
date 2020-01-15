@@ -15,24 +15,6 @@ import java.util.List;
 @Api("helloworld")
 public class HelloWorldResource {
 
-    /*
-    * json objekt för create-anrop
-    *
-
-    {
-        "hello": "Hello",
-        "world": "World"
-    }
-
-    För att testa get:
-    http://localhost:8080/tomee-rest-arquillian-1.0-SNAPSHOT/api/helloworld/testget
-    *
-    För get och create anrop som persisterar databasen, create anrop ska ha en body med objektet ovan:
-    http://localhost:8080/poetry-slack-1.0-SNAPSHOT/api/helloworld
-
-    *
-    * * */
-
     @Inject
     private HelloWorldManagementServiceLocal service;
 

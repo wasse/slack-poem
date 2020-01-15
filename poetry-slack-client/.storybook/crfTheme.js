@@ -8,6 +8,8 @@ export default create({
    base: 'light',
    textColor: 'black',
    textInverseColor: 'rgba(255, 255, 255, 0.9)',
+   colorPrimary: 'black',
+   colorSecondary: 'gray',
 })
 
 /**
