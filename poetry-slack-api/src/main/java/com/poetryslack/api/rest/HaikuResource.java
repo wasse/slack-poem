@@ -1,14 +1,17 @@
 package com.poetryslack.api.rest;
 
-import com.poetryslack.api.services.HaikuServiceLocal;
+import com.poetryslack.api.haikugenerator.Haiku;
+import com.poetryslack.api.haikugenerator.HaikuDTO;
+import com.poetryslack.api.haikugenerator.HaikuGeneratorException;
+import com.poetryslack.api.services.HaikuGeneratorService;
 import io.swagger.annotations.Api;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.Date;
 
 @Stateless
 @Path("/haiku")
@@ -16,14 +19,26 @@ import javax.ws.rs.Produces;
 public class HaikuResource {
 
     @Inject
-    HaikuServiceLocal haikuService;
+    HaikuGeneratorService haikuService;
 
-    @GET
-    @Produces("application/JSON")
-    @Consumes("application/JSON")
-    public String[] getHaiku(String text) {
-        haikuService.generateHaiku("");
-        return null;
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response createHaiku(HaikuDTO dto) {
+        Response.ResponseBuilder rb = Response.status(Response.Status.BAD_REQUEST);
+        rb.expires(new Date());
+        Haiku haiku = null;
+
+        try {
+            haiku = haikuService.generateHaiku(dto.getText());
+        } catch (HaikuGeneratorException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return rb.status(Response.Status.BAD_REQUEST)
+                    .entity(new HaikuGeneratorException(e.getMessage()))
+                    .build();
+        }
+
+        return rb.status(Response.Status.CREATED).type(MediaType.APPLICATION_JSON).entity(haiku).build();
     }
-
 }
