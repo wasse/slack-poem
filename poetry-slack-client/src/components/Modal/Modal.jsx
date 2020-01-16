@@ -1,7 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
-const Modal = ({ showCard, hide, title, children }) =>
+const Modal = ({ showCard, hide, title, children, getWords }) =>
    showCard ? (
       <div className="modal is-active">
          <div className="modal-background" />
@@ -29,7 +28,7 @@ const Modal = ({ showCard, hide, title, children }) =>
                <div className="content">{children}</div>
             </section>
             <footer className="modal-card-foot">
-               <button>Done</button>
+               <button onClick={getWords}>Choose</button>
                <button onClick={hide}>Cancel</button>
             </footer>
          </div>

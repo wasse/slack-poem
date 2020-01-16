@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 
 import 'bulma'
 
-import Button from '../../components/Button'
-// import GetConversations from '../GetConversations';
 import ModalCardStart from '../../components/Modal/ModalCardStart'
 import Modal from '../../components/Modal/Modal'
 import KitchenPoemStart from './KitchenPoemStart'
 
 const KitchenPoem = () => {
-   // const [ showCard, setShowCard ] = useState(false)
    const { showCard, toggleModal } = ModalCardStart()
+   // const { getWords } = GetWords()
    console.log(toggleModal)
    return (
       <div className="column">
@@ -25,12 +23,11 @@ const KitchenPoem = () => {
             showCard={showCard}
             hide={toggleModal}
             title={'Choose a Channel'}
-            // children={KitchenPoemStart, "Hej"} // TODO: fix so that Kitchen..Start component will be shown
+            // getWords={getWords}
          >
             <KitchenPoemStart />
          </Modal>
 
-         {/* <GetConversations/> */}
       </div>
    )
 }
