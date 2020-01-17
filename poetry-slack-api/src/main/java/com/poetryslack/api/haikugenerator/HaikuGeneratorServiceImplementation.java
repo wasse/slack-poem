@@ -19,15 +19,21 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
         String strippedText = stripOfDigitsAndPunctuationCharactersAndMakeLowerCase(text);
         Scanner scanner = new Scanner(strippedText);
         String[] generatedHaiku = null;
+        int wordCount = 0;
 
         if (text.length() == 0) {
-            throw new HaikuGeneratorException("Not enough words exists to generate a haiku from");
+            throw new HaikuGeneratorException("The provided text is empty. This generator only accepts a word count of 15 or more.");
         }
 
         while (scanner.hasNext()) {
             String wordFromTextArgument = scanner.next();
+            wordCount += 1;
             int value = syllableCounter.countSyllables(wordFromTextArgument);
-            allWordsSortedBySyllableCountKeys.computeIfAbsent(value, k -> new ArrayList<String>()).add(wordFromTextArgument);
+            allWordsSortedBySyllableCountKeys.computeIfAbsent(value, k -> new ArrayList<String>()).add(wordFromTextArgument + value);
+        }
+
+        if (wordCount < 15) {
+            throw new HaikuGeneratorException("The provided text does not have enough words. This generator accepts a word count of 15 or more.");
         }
 
         try {
@@ -66,29 +72,31 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
                             .get(aRandomlySelectedCombinationOfFiveOrSeven[i]);
                     oneWord = wordsConnectedToASyllableCountKey
                             .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
-                    row.append(oneWord + " ");
+                    row.append(oneWord).append(" ");
 
                 } catch (NullPointerException e) {
                     int key = 1;
+
                     for (int y = 0; y < combinationsOfFiveOrSeven.length; y++) {
                         try {
                             wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys
                                                                 .get(key);
                             Collections.shuffle(wordsConnectedToASyllableCountKey);
                             oneWord = wordsConnectedToASyllableCountKey
-                                    .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
-                            row.append(oneWord + " ");
+//                                    .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
+                                    .get(wordsConnectedToASyllableCountKey.size() - 1);
+                            row.append(oneWord).append(" ");
                             key += 1;
-                        } catch (NullPointerException n) { continue; }
+                        } catch (NullPointerException ignored) {}
                     }
-                }
 
+                }
             }
 
         if (row.length() != 0) {
             return row.toString().substring(0,1).toUpperCase() + row.substring(1).trim();
         } else {
-            throw new HaikuGeneratorException("Haiku can not be created from the provided text");
+            throw new HaikuGeneratorException("Haiku can not be created from the provided text.");
         }
 
     }

@@ -9,6 +9,7 @@ const HaikuStore = {
       ],
       // haiku: [],
       title: '',
+      errorHaiku: [],
    }),
    actions: {
       setPoem: action(haiku => {
@@ -16,6 +17,9 @@ const HaikuStore = {
       }),
       setTitle: action(title => {
          HaikuStore.data.title = title
+      }),
+      setErrorHaiku: action(errorHaiku => {
+         HaikuStore.data.errorHaiku = errorHaiku
       }),
    },
    computed: {},
