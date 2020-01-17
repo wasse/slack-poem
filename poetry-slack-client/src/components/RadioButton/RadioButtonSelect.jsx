@@ -1,14 +1,15 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
-const RadioButtonSelect = () => {
-    const [ isSelected, setIsSelected ] = useState(false)
+// const RadioButtonSelect = () => {
+//     const [ channel, setChannel ] = useState()
 
-    function selectButton() {
-        setIsSelected(!isSelected)
-    }
-    return (
-        { isSelected, selectButton }
-    )
-}
+//     function selectChannel({target}) {
+//         setChannel(target)
+//         console.log(target.value)
+//     }
+//     return (
+//         { channel, selectChannel }
+//     )
+// }
 
-export default RadioButtonSelect
+// export default RadioButtonSelect
