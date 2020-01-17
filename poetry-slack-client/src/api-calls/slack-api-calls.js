@@ -25,42 +25,90 @@ export const fetchAndSetAccessToken = () => {
    fetch(accessURI)
       .then(response => response.json())
       .then(data => {
-         //  console.log(data)
+          console.log("Fetching token")
          //  console.log(data.access_token)
          SessionStore.actions.setAccessToken(data.access_token)
          SessionStore.actions.setIsAuthenticated(true)
-         //  console.log(SessionStore.data.accessToken)
+
+         getChannels()
+
+
+         // Test, hämta kanaler ->
+         // getChannels()
+
       })
 }
 
-// const getChannels = () => {
-//    const getChannelsURI =
-//       'https://slack.com/api/channels.list?exclude_members=false&token=' +
-//       SessionStore.data.accessToken +
-//       '&limit=' +
-//       SessionStore.data.numberOfMessages +
-//       '&exclude_archived=true'
-// }
+export const getChannels = () => {
+   const getChannelsURI =
+      'https://slack.com/api/channels.list?exclude_members=false&token=' +
+      SessionStore.data.accessToken +
+      '&limit=' +
+      SessionStore.data.numberOfMessages +
+      '&exclude_archived=true'
 
-//   getChannelMessages: action(() => {
-//      const getChannelMessagesURI =
-//         'https://slack.com/api/channels.history?count=' +
-//         SessionStore.data.numberOfMessages +
-//         '&unreads=true&inclusive=true&token=' +
-//         SessionStore.data.accessToken +
-//         '&channel=' +
-//         SessionStore.data.channel
-//   }),
-//   postMessageInChannel: action(() => {
-//      const postMessageInChannelURI =
-//         'https://slack.com/api/chat.postMessage'
-//      // Header:
-//      // Authorization Bearer (token)
-//      // Content - Type application/json
-//      // BODY:
-//      // {
-//      // 	"text": "Hello World!",
-//      // 	"channel": "CPSQPDN3V",
-//      // 	"as_user": true
-//      // }
-//   }),
+   fetch(getChannelsURI)
+      .then(response => response.json())
+      .then(data => {
+         SessionStore.actions.setChannelsResponseObject(data)
+         console.log("Fetching channels")
+
+
+         // Test hämta meddelanden från kanal ->
+         // console.log(data)
+         // console.log(data.channels[0].id)
+         getChannelMessages(SessionStore.data.channelsResponseObject.channels[0].id)
+         // postMessageInChannel("Här kommer det ett meddelande", SessionStore.data.channelsResponseObject.channels[0].id)
+      })
+}
+
+export const getChannelMessages = (channelId) => {
+   const getChannelMessagesURI =
+      'https://slack.com/api/channels.history?count=' +
+      SessionStore.data.numberOfMessages +
+      '&unreads=true&inclusive=true&token=' +
+      SessionStore.data.accessToken +
+      '&channel=' +
+      channelId
+      // SessionStore.data.channel
+
+   fetch(getChannelMessagesURI)
+      .then(response => response.json())
+      .then(data => {
+         SessionStore.actions.setoauthResponseObject(data)
+         
+         // Test
+         // wordList()
+         
+      })
+      
+  }
+
+  export const postMessageInChannel = (message, channel) => {
+     const postMessageInChannelURI =
+        'https://slack.com/api/chat.postMessage?token=' + SessionStore.data.accessToken + '&channel=' + channel
+        + '&text=' + message + '&as_user=true'
+
+      console.log("Posting message")
+      fetch(postMessageInChannelURI, {
+         method: 'POST',
+         mode: 'no-cors'
+      })
+
+      
+  }
+
+  export const wordList = () => {
+   let channelObject = SessionStore.data.oauthResponseObject
+   // console.log(JSON.stringify(channelObject.messages))
+   channelObject.messages.forEach(element => {
+      console.log(element.text)
+   });
+   // let words = ""
+   // let concat = (text) => {
+   //    words += text + " "
+   // }
+   // channelObject.messages.text.forEach(concat)
+   // console.log(words)
+   // return words
+}

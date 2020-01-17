@@ -8,6 +8,8 @@ const SessionStore = {
       accessToken: '',
       numberOfMessages: 100,
       channel: 'CPSQPDN3V',
+      oauthResponseObject: null,
+      channelsResponseObject: {},
    }),
    actions: {
       setIsAuthenticated: action(auth => {
@@ -28,6 +30,12 @@ const SessionStore = {
       setChannel: action(channel => {
          SessionStore.data.channel = channel
       }),
+      setoauthResponseObject: action(oauthObject => {
+         SessionStore.data.oauthResponseObject = oauthObject 
+      }),
+      setChannelsResponseObject: action(channelsObject => {
+         SessionStore.data.channelsResponseObject = channelsObject
+      })
    },
    computed: {},
 }
