@@ -1,8 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Button } from '../../../components'
 import ModalCardStart from '../../../components/Modal/ModalCardStart'
-import Modal from '../../../components/Modal/Modal'
+import HaikuModal from './HaikuModal'
 import styles from '../Haiku.module.scss'
 import '../Haiku.module.scss'
 import { observer } from 'mobx-react'
@@ -41,7 +40,7 @@ const Introduction = observer((...other) => {
                Start generating!
             </button>
          </div>
-         <Modal
+         <HaikuModal
             showCard={showCard}
             hide={toggleModal}
             title={'Choose a Channel'}

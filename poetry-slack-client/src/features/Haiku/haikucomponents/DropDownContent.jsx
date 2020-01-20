@@ -32,7 +32,7 @@ const DropDownContent = observer(props => {
                />
             </div>
             <p className="help">
-               The haiku needs a title before you can submit it.
+               The haiku needs a title before you can save or post it.
             </p>
             <hr className="dropdown-divider" />
             <div className={styledSubmit}>
@@ -40,8 +40,20 @@ const DropDownContent = observer(props => {
                   type="submit"
                   disabled={!haiku.data.title.length}
                   className="button is-primary"
+                  onClick={() => console.log('Save clicked')}
                >
-                  Submit
+                  Save
+               </button>
+            </div>
+            <hr className="dropdown-divider" />
+            <div className={styledSubmit}>
+               <button
+                  type="submit"
+                  disabled={!haiku.data.title.length}
+                  className="button is-primary"
+                  onClick={() => console.log('Post clicked')}
+               >
+                  Post
                </button>
             </div>
          </div>

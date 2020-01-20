@@ -31,11 +31,11 @@ const SessionStore = {
          SessionStore.data.channel = channel
       }),
       setoauthResponseObject: action(oauthObject => {
-         SessionStore.data.oauthResponseObject = oauthObject 
+         SessionStore.data.oauthResponseObject = oauthObject
       }),
       setChannelsResponseObject: action(channelsObject => {
          SessionStore.data.channelsResponseObject = channelsObject
-      })
+      }),
    },
    computed: {},
 }

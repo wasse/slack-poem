@@ -6,6 +6,7 @@ import { observer } from 'mobx-react'
 import { TileGroup } from '../../components'
 import Introduction from './haikucomponents/Introduction'
 import HaikuDisplay from './haikucomponents/HaikuDisplay'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Haiku = observer(props => {
    const styledColumn = clsx('tile is-ancestor is-full-mobile' + styles.column)
@@ -13,13 +14,13 @@ const Haiku = observer(props => {
    return (
       <div className={styledColumn}>
          <TileGroup
-            displaySecondTileContent
+            displaySecondTileContent={haiku.data.haiku.length === 3}
             leftContent={<Introduction />}
             rightContent={
                haiku.data.haiku.length === 3 ? (
-                  <HaikuDisplay haikuprop={haiku.data.haiku} />
+                  <HaikuDisplay />
                ) : (
-                  <div />
+                  <FontAwesomeIcon className={styles.icon} icon="spinner" />
                )
             }
          />

@@ -25,6 +25,14 @@
    margin: auto;
    margin-top: 2rem;
    font-weight: lighter;
+   margin-bottom: 2rem;
+}
+
+.tryagainbutton {
+   margin: auto;
+   margin-top: 1rem;
+   font-weight: lighter;
+   margin-bottom: 2rem;
 }
 
 .submitbutton {
@@ -41,8 +49,22 @@
 .haikumessage {
    text-align: left;
    font-family: 'Merienda One', cursive;
-   border: 0.7rem solid $brown;
+   border-left: 0.7rem solid $brown;
    padding: 1rem;
+   background: linear-gradient(to right, $beige-light, white);
+   div {
+      margin-top: 0.7rem;
+      margin-bottom: 0.7rem;
+   }
+}
+
+.errorhaikumessage {
+   text-align: left;
+   font-family: 'Merienda One', cursive;
+   border-left: 0.7rem solid rgb(196, 9, 9);
+   color: rgb(196, 9, 9);
+   padding: 1rem;
+   background: linear-gradient(to right, $beige-light, white);
    div {
       margin-top: 0.7rem;
       margin-bottom: 0.7rem;

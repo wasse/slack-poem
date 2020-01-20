@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import { useStores } from '../../custom-hooks/use-stores'
-import { fetchAndSetAccessToken, getChannelMessages } from '../../api-calls/slack-api-calls'
+import {
+   fetchAndSetAccessToken,
+   getChannelMessages,
+} from '../../api-calls/slack-api-calls'
 import { Redirect } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 
 const Callback = () => {
-   console.log("Callback rendering")
+   console.log('Callback rendering')
    const { session } = useStores()
 
    const urlParams = new URLSearchParams(window.location.search)
@@ -15,7 +18,9 @@ const Callback = () => {
    session.actions.setCodeParam(myParam)
    console.log('From session data ' + session.data.codeParam)
 
-   useEffect(() => {fetchAndSetAccessToken()}, [])
+   useEffect(() => {
+      fetchAndSetAccessToken()
+   }, [])
 
    console.log('Is authenticated ' + session.data.isAuthenticated)
 
@@ -27,7 +32,7 @@ const Callback = () => {
       </div>
    ) : (
       <div>
-         <FontAwesomeIcon icon="fa-spinner" />
+         <FontAwesomeIcon icon="spinner" />
       </div>
    )
 
