@@ -1,4 +1,4 @@
-package com.poetryslack.api.haikugenerator;
+package com.poetryslack.api.exceptions;
 
 public class HaikuGeneratorException extends Exception {
 
@@ -6,8 +6,8 @@ public class HaikuGeneratorException extends Exception {
 
     private String[] errorHaiku = new String[]{
             "Error was returned",
-            "The server only serves this",
-            "Third row 5 syllables"
+            "Try again, but do not try",
+            "the same thing again"
     };
 
     public HaikuGeneratorException() {}

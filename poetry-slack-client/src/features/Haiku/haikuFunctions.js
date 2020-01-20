@@ -1,8 +1,5 @@
 import { fetchGeneratedHaiku } from '../../api-calls/haiku-api-calls'
-import {
-   getChannelMessages,
-   postMessageInChannel,
-} from '../../api-calls/slack-api-calls'
+import { postMessageInChannel } from '../../api-calls/slack-api-calls'
 import SessionStore from '../../stores/SessionStore'
 import HaikuStore from '../../stores/HaikuStore'
 
@@ -18,7 +15,6 @@ export const getChannelResponseObjectAsIdAndNameList = () => {
 export const generateHaiku = (channelId, channelName) => {
    // The response object has a misleading name. But here is where the channel message
    // object is stored after the fetch method above finishes.
-
    HaikuStore.actions.setChosenChannelName(channelName)
    HaikuStore.actions.setChosenChannelId(channelId)
 

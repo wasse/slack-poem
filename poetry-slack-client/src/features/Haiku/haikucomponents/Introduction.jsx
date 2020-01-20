@@ -18,10 +18,7 @@ const Introduction = observer((...other) => {
                workspace. It might not turn out to be according to all the
                rules, but entertaining nonetheless.
             </p>
-            <p>
-               The channel/channels/conversations you choose will set the tone
-               of the poem.
-            </p>
+            <p>The channel you choose will set the tone of the poem.</p>
             <p className="content is-bold">
                "A traditional Japanese haiku is a three-line poem with seventeen
                syllables, written in a 5/7/5 syllable count. Often focusing on

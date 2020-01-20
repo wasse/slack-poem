@@ -2,7 +2,7 @@ package com.poetryslack.api.rest;
 
 import com.poetryslack.api.haikugenerator.Haiku;
 import com.poetryslack.api.haikugenerator.HaikuDTO;
-import com.poetryslack.api.haikugenerator.HaikuGeneratorException;
+import com.poetryslack.api.exceptions.HaikuGeneratorException;
 import com.poetryslack.api.services.HaikuGeneratorService;
 import io.swagger.annotations.Api;
 
@@ -32,13 +32,16 @@ public class HaikuResource {
         try {
             haiku = haikuService.generateHaiku(dto.getText());
         } catch (HaikuGeneratorException e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
             return rb.status(Response.Status.BAD_REQUEST)
-                    .entity(new HaikuGeneratorException(e.getMessage()))
+                    .type(MediaType.APPLICATION_JSON)
+                    .entity(new HaikuGeneratorException(e.getMessage(), e.getErrorHaiku()))
                     .build();
         }
 
-        return rb.status(Response.Status.CREATED).type(MediaType.APPLICATION_JSON).entity(haiku).build();
+        return rb.status(Response.Status.CREATED)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(haiku)
+                .build();
     }
 }

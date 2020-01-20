@@ -2,7 +2,8 @@ import SessionStore from '../stores/SessionStore'
 import HaikuStore from '../stores/HaikuStore'
 
 export const fetchGeneratedHaiku = text => {
-   const ServerURI = 'http://localhost:8080/api/haiku'
+   // const ServerURI = 'http://localhost:8080/api/haiku'
+   const ServerURI = process.env.REACT_APP_API_HAIKUPOST
    fetch(ServerURI, {
       body: JSON.stringify({ text: text }),
       headers: {

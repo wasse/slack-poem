@@ -1,5 +1,6 @@
 package com.poetryslack.api.haikugenerator;
 
+import com.poetryslack.api.exceptions.HaikuGeneratorException;
 import com.poetryslack.api.services.HaikuGeneratorService;
 
 import javax.ejb.Stateless;
@@ -29,7 +30,7 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
             String wordFromTextArgument = scanner.next();
             wordCount += 1;
             int value = syllableCounter.countSyllables(wordFromTextArgument);
-            allWordsSortedBySyllableCountKeys.computeIfAbsent(value, k -> new ArrayList<String>()).add(wordFromTextArgument + value);
+            allWordsSortedBySyllableCountKeys.computeIfAbsent(value, k -> new ArrayList<String>()).add(wordFromTextArgument);
         }
 
         if (wordCount < 15) {
@@ -65,33 +66,30 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
         StringBuilder row = new StringBuilder();
         String oneWord = "";
 
-            for (int i = 0; i < aRandomlySelectedCombinationOfFiveOrSeven.length; i++) {
+        for (int value : aRandomlySelectedCombinationOfFiveOrSeven) {
 
-                try {
-                    wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys
-                            .get(aRandomlySelectedCombinationOfFiveOrSeven[i]);
-                    oneWord = wordsConnectedToASyllableCountKey
-                            .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
-                    row.append(oneWord).append(" ");
+            try {
+                wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys
+                        .get(value);
+                oneWord = wordsConnectedToASyllableCountKey
+                        .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
+                row.append(oneWord).append(" ");
 
-                } catch (NullPointerException e) {
-                    int key = 1;
-
-                    for (int y = 0; y < combinationsOfFiveOrSeven.length; y++) {
-                        try {
-                            wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys
-                                                                .get(key);
-                            Collections.shuffle(wordsConnectedToASyllableCountKey);
-                            oneWord = wordsConnectedToASyllableCountKey
-//                                    .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
-                                    .get(wordsConnectedToASyllableCountKey.size() - 1);
-                            row.append(oneWord).append(" ");
-                            key += 1;
-                        } catch (NullPointerException ignored) {}
-                    }
-
+            } catch (NullPointerException e) {
+                row.delete(0, row.length());
+                int key = 1;
+                for (int y = 0; y < combinationsOfFiveOrSeven.length; y++) {
+                    try {
+                        wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys.get(key);
+                        Collections.shuffle(wordsConnectedToASyllableCountKey);
+                        oneWord = wordsConnectedToASyllableCountKey.get(wordsConnectedToASyllableCountKey.size() - 1);
+                        row.append(oneWord).append(" ");
+                        key += 1;
+                    } catch (NullPointerException ignored) {}
                 }
+
             }
+        }
 
         if (row.length() != 0) {
             return row.toString().substring(0,1).toUpperCase() + row.substring(1).trim();

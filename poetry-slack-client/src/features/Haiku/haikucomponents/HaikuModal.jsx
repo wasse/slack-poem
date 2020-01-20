@@ -5,40 +5,43 @@ import {
    getChannelResponseObjectAsIdAndNameList,
 } from '../haikuFunctions'
 import { getChannelMessages } from '../../../api-calls/slack-api-calls'
+import { useStores } from '../../../custom-hooks/use-stores'
+import styles from '../Haiku.module.scss'
 
 const HaikuModal = observer(({ showCard, hide, title }) => {
+   const { haiku } = useStores()
+
    let chnl = useRef(getChannelResponseObjectAsIdAndNameList())
 
-   //    useEffect(() => {
-   //       chnl = useRef(getChannelResponseObjectAsIdAndNameList())
-   //    }, [])
    const [radioChecked, setRadioChecked] = useState(chnl.current[0].id)
    const [chosenChannelId, setChosenChannelId] = useState(chnl.current[0].id)
    const [chosenChannelName, setChosenChannelName] = useState(
       chnl.current[0].name
    )
 
+   const radioButtons = chnl.current.map(ch => (
+      <li key={ch.id}>
+         <label className="radio">
+            <input
+               checked={radioChecked === ch.id}
+               type="radio"
+               name={ch.name}
+               value={ch.id}
+               onChange={() => onRadioButtonChange(ch.id, ch.name)}
+               onClick={() => setRadioChecked(ch.id)}
+            />
+            {'  '}
+            {ch.name}
+         </label>
+      </li>
+   ))
+
    const onRadioButtonChange = (id, name) => {
       setChosenChannelId(id)
       setChosenChannelName(name)
    }
-
-   const radioButtons = chnl.current.map(ch => (
-      <label className="radio" key={ch.id}>
-         <input
-            checked={radioChecked === ch.id}
-            type="radio"
-            name={ch.name}
-            value={ch.id}
-            onChange={() => onRadioButtonChange(ch.id, ch.name)}
-            onClick={() => setRadioChecked(ch.id)}
-         />
-         {'  '}
-         {ch.name}
-      </label>
-   ))
-
    const handleGenerateButtonClick = () => {
+      haiku.actions.setHaiku([])
       getChannelMessages(chosenChannelId)
       setTimeout(() => {
          generateHaiku(chosenChannelId, chosenChannelName)
@@ -69,8 +72,10 @@ const HaikuModal = observer(({ showCard, hide, title }) => {
                </button>
             </header>
             <section className="modal-card-body">
-               <div className="content">
-                  <div className="control">{radioButtons}</div>
+               <div className="card-content">
+                  <div className="control">
+                     <ul className={styles.radiolist}>{radioButtons}</ul>
+                  </div>
                </div>
             </section>
             <footer className="modal-card-foot">

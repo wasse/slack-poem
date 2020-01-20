@@ -20,7 +20,9 @@ const Haiku = observer(props => {
                haiku.data.haiku.length === 3 ? (
                   <HaikuDisplay />
                ) : (
-                  <FontAwesomeIcon className={styles.icon} icon="spinner" />
+                  <div>
+                     <FontAwesomeIcon className={styles.icon} icon="spinner" />
+                  </div>
                )
             }
          />
