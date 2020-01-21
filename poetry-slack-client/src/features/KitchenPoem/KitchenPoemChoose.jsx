@@ -9,12 +9,11 @@ import getWordList from './getWordList'
 import WordDnD from './WordDnD'
 
 const KitchenPoemChoose = observer(( obj ) => {
-
     const { kitchen } = useStores()
     const selectedChannel = kitchen.data.selectedChannel
     let { url } = useRouteMatch()
 
-    let shuffledArray = getWordList(selectedChannel, 300)
+    let shuffledArray = getWordList(selectedChannel, 30)
 
     const goToKitchen = () => {
         kitchen.actions.toggleAtStart()

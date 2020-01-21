@@ -1,13 +1,17 @@
 @import '../../assets/styles.scss';
 
 .dragdrop {
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .columnDnD {
     margin: 8px;
-    border: 1px solid;
+    padding: 8px;
+    border: 3px solid;
     border-radius: 5px;
-    width: 200px;
+    width: auto;
     display: flex;
     flex-direction: column;
 }
@@ -21,9 +25,30 @@
     flex-grow: 1;
     min-height: 120px;
 
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: center;
+    align-content: space-around;
+    // justify-content: flex-start;
+
     // background-color: ${props => (props.isDraggingOver ? grey : white)};
 }
 
 .item {
-    width: auto;
+    width: min-content;
+    height: min-content;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 8px;
+    margin: 5px;
+    background-color: white;
+    font-family: "Courier New", Courier, monospace;
+    color: black;
+}
+
+.generatedPoem {
+    margin: 8px;
+    padding: 8px;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
 }

@@ -9,14 +9,17 @@ import wordItems from "./wordItems";
 import { observer } from "mobx-react-lite";
 
 const WordDnD = observer(() => {
-    const [ dataDnD, setDataDnD ] = useState(() => wordItems())
-    // const { kitchen } = useStores()
+    const { kitchen } = useStores()
+    const selectedChannel = kitchen.data.selectedChannel
+    const [ dataDnD, setDataDnD ] = useState(() => wordItems(selectedChannel, 30))
     // let dataDnD = kitchen.data.dataDnD
     // let words = wordItems()
     // dataDnD = kitchen.actions.setDataDnD(words)
     // console.log(dataDnD)
     // dataDnD = wordItems()
     console.log(dataDnD)
+    const [ poem, setPoem ] = useState('')
+    const [ isGenerated, setIsGenerated ] = useState(false)
 
     const onDragEnd = (result) => {
         const { destination, source, draggableId } = result
@@ -44,7 +47,6 @@ const WordDnD = observer(() => {
                     [newColumn.id]: newColumn
                 }
             }
-            console.log("dragEnd")
             return setDataDnD(newData)
         } 
         // move to another column
@@ -73,22 +75,47 @@ const WordDnD = observer(() => {
         return setDataDnD(newData)
     }
 
-    return (
-        <DragDropContext
-            // onDragStart
-            // onDragUpdate
-            onDragEnd={onDragEnd}
-        >
-            <div className={style.dragdrop}>
-                {dataDnD.columnOrder.map(columnId => {
-                    const column = dataDnD.columns[columnId]
-                    const items = column.itemIDs.map(itemId => dataDnD.items[itemId])
-                    console.log(items)
-                    return <ColumnDnD key={column.id} column={column} items={items} />
-                })}
-            </div>
+    const generatePoem = () => {
+        let contents = []
+        let itemsInPoem = dataDnD.columns['column-2'].itemIDs // array
+        if(itemsInPoem.length != 0){
+            const items = dataDnD.items
+            const size = Object.keys(items).length
+            for(let i = 0; i < itemsInPoem.length; i++){
+                for(let j = 0; j < size; j++){
+                    if(itemsInPoem[i] === items[('item-'+j).toString()].id){
+                        contents.push(items[('item-'+j).toString()].content)
+                    }
+                }
+                
+            }
+        }
+        let tempPoem = contents.join(' ')
+        tempPoem = tempPoem.charAt(0).toUpperCase() + tempPoem.slice(1)
+        setPoem(tempPoem)
+        setIsGenerated('true')
+    }
 
-        </DragDropContext>
+    return (
+        <div>
+            <button className="button" onClick={generatePoem}>Generate Poem</button>
+            {isGenerated ? <div className={style.generatedPoem}>{poem}</div> : null} 
+            <DragDropContext
+                // onDragStart
+                // onDragUpdate
+                onDragEnd={onDragEnd}
+            >
+                <div className={style.dragdrop}>
+                    {dataDnD.columnOrder.map(columnId => {
+                        const column = dataDnD.columns[columnId]
+                        const items = column.itemIDs.map(itemId => dataDnD.items[itemId])
+                        // console.log(items)
+                        return <ColumnDnD key={column.id} column={column} items={items} />
+                    })}
+                </div>
+            </DragDropContext>
+
+        </div>
     )
 })
 
