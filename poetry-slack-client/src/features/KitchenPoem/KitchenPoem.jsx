@@ -44,9 +44,6 @@ const KitchenPoem = observer(() => {
          >
             <KitchenPoemStart />
          </Modal>
-
-         <WordDnD />
-
       </div>
    ) : (
       <KitchenPoemChoose />
