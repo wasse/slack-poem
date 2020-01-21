@@ -1,5 +1,5 @@
 import SessionStore from '../stores/SessionStore'
-import { CLIENT_ID, CLIENT_SECRET, SIGN_SECRET } from '../SECRETS'
+import { CLIENT_ID, CLIENT_SECRET } from '../SECRETS'
 
 // A list of all channels:
 // https://slack.com/api/channels.list
@@ -26,7 +26,10 @@ export const fetchAndSetAccessToken = () => {
       .then(response => response.json())
       .then(data => {
          console.log('Fetching token')
+
+         SessionStore.actions.setOauthUserInfoResponseObject(data)
          //  console.log(data.access_token)
+
          SessionStore.actions.setAccessToken(data.access_token)
          SessionStore.actions.setIsAuthenticated(true)
 
@@ -94,7 +97,7 @@ export const postMessageInChannel = (message, channel) => {
    console.log('Posting message')
    fetch(postMessageInChannelURI, {
       method: 'POST',
-      mode: 'no-cors',
+      mode: 'no-cors'
    })
 }
 

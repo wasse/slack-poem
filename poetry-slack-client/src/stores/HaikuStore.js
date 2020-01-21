@@ -1,5 +1,4 @@
 import { observable, action, computed } from 'mobx'
-import SessionStore from '../stores/SessionStore'
 
 const HaikuStore = {
    data: observable({
@@ -34,10 +33,7 @@ const HaikuStore = {
          HaikuStore.data.chosenChannelId = id
       }),
    },
-   computed: {
-      // getReducedListOfChannels: computed(() => {
-      // })
-   },
+   computed: {},
 }
 
 export default HaikuStore

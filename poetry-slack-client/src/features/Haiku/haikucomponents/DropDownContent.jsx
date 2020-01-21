@@ -3,6 +3,7 @@ import styles from '../Haiku.module.scss'
 import clsx from 'clsx'
 import { useStores } from '../../../custom-hooks/use-stores'
 import { observer } from 'mobx-react'
+import { formatHaikuAndPostAsMessageInChannel } from '../haikuFunctions'
 
 const styledDropDownMenuContent = clsx(
    'dropdown-content',
@@ -17,6 +18,15 @@ const DropDownContent = observer(props => {
 
    const handleChange = e => {
       haiku.actions.setTitle(e.target.value)
+   }
+
+   const handlePost = () => {
+      formatHaikuAndPostAsMessageInChannel()
+   }
+
+   const handleSave = () => {
+      // TODO: .....
+      console.log('Save clicked')
    }
 
    return (
@@ -40,7 +50,7 @@ const DropDownContent = observer(props => {
                   type="submit"
                   disabled={!haiku.data.title.length}
                   className="button is-primary"
-                  onClick={() => console.log('Save clicked')}
+                  onClick={() => handleSave()}
                >
                   Save
                </button>
@@ -51,7 +61,7 @@ const DropDownContent = observer(props => {
                   type="submit"
                   disabled={!haiku.data.title.length}
                   className="button is-primary"
-                  onClick={() => console.log('Post clicked')}
+                  onClick={() => handlePost()}
                >
                   Post
                </button>

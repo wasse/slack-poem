@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { observer } from 'mobx-react'
 import {
    generateHaiku,
@@ -7,6 +7,7 @@ import {
 import { getChannelMessages } from '../../../api-calls/slack-api-calls'
 import { useStores } from '../../../custom-hooks/use-stores'
 import styles from '../Haiku.module.scss'
+import '../Haiku.module.scss'
 
 const HaikuModal = observer(({ showCard, hide, title }) => {
    const { haiku } = useStores()
@@ -40,8 +41,10 @@ const HaikuModal = observer(({ showCard, hide, title }) => {
       setChosenChannelId(id)
       setChosenChannelName(name)
    }
+
    const handleGenerateButtonClick = () => {
       haiku.actions.setHaiku([])
+      haiku.actions.setTitle('')
       getChannelMessages(chosenChannelId)
       setTimeout(() => {
          generateHaiku(chosenChannelId, chosenChannelName)
@@ -93,4 +96,5 @@ const HaikuModal = observer(({ showCard, hide, title }) => {
       </div>
    ) : null
 })
+
 export default HaikuModal
