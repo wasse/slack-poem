@@ -1,58 +1,34 @@
 import React from 'react'
 
-const KitchenPoemChoose = ( obj ) => {
-    let originalFile = {
-        "ok": true,
-        "messages": [
-            {
-                "type": "message",
-                "user": "U012AB3CDE",
-                "text": "I find you punny and would like to smell your nose letter",
-                "ts": "1512085950.000216"
-            },
-            {
-                "type": "message",
-                "user": "U061F7AUR",
-                "text": "What, you want to smell my shoes better?",
-                "ts": "1512104434.000490"
-            }
-        ],
-        "has_more": true,
-        "pin_count": 0,
-        "response_metadata": {
-            "next_cursor": "bmV4dF90czoxNTEyMDg1ODYxMDAwNTQz"
-        }
-    }
-    console.log(obj.channel)
-    console.log(originalFile)
+import { Link, useRouteMatch } from 'react-router-dom'
+import { useStores } from '../../custom-hooks/use-stores'
+import { observer } from 'mobx-react-lite'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-    let mappedFile
-    if(originalFile.ok) {
-        mappedFile = originalFile.messages.map(obj => obj.text)
-    }
-    console.log(mappedFile)
-    let mappedFileString = JSON.stringify(mappedFile)
-    console.log(mappedFileString)
-    let joined = mappedFile.join(', ')
-    console.log(joined)
+import getWordList from './getWordList'
+import WordDnD from './WordDnD'
 
-    const reg = /[,\.?\!]/
-    let newArray = joined.split(/\s/).map(word => word.replace(reg, ""))
-    console.log(newArray)
+const KitchenPoemChoose = observer(( obj ) => {
+
+    const { kitchen } = useStores()
+    const selectedChannel = kitchen.data.selectedChannel
+    let { url } = useRouteMatch()
+
+    let shuffledArray = getWordList(selectedChannel, 300)
+
+    const goToKitchen = () => {
+        kitchen.actions.toggleAtStart()
+        kitchen.actions.toggleShowCard()
+    }
+
     return (
         <div>
-            {/* <button onClick="">Close</button> */}
-            {newArray.map(word => 
-                <div className="card has-text-centered" key={word}>{word}</div>)
-            }
+            {/* <button onClick={goToKitchen}>Close</button> */}
+            <Link to={`${url}/kitchen-poem`} onClick={goToKitchen}>Kitchen Poem</Link>
+            <WordDnD /> 
         </div>
         )
         
-}
+})
 
 export default KitchenPoemChoose
-
-// function reqListener(e) {
-//     data = JSON.parse(this.responseText);
-//     console.log(data);
-// }

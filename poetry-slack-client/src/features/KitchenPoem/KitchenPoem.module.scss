@@ -1,0 +1,29 @@
+@import '../../assets/styles.scss';
+
+.dragdrop {
+}
+
+.columnDnD {
+    margin: 8px;
+    border: 1px solid;
+    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.columnTitle {
+    padding: 8px;
+}
+
+.itemList {
+    padding: 8px;
+    flex-grow: 1;
+    min-height: 120px;
+
+    // background-color: ${props => (props.isDraggingOver ? grey : white)};
+}
+
+.item {
+    width: auto;
+}
