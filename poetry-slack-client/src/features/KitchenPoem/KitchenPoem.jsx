@@ -8,10 +8,14 @@ import Modal from '../../components/Modal/Modal'
 import KitchenPoemStart from './KitchenPoemStart'
 import KitchenPoemChoose from './KitchenPoemChoose'
 import WordDnD from './WordDnD'
+import wordItems from './wordItems'
+import { getChannelMessages } from '../../api-calls/slack-api-calls'
 
 const KitchenPoem = observer(() => {
+   const { session } = useStores()
    const { kitchen } = useStores()
-   const channel = kitchen.data.selectedChannel
+   let channel = kitchen.data.selectedChannelID
+   const dataDnD = kitchen.data.dataDnD
    let atStart = kitchen.data.atStart
    let showCard = kitchen.data.showCard
 
@@ -23,7 +27,17 @@ const KitchenPoem = observer(() => {
     }
 
    const getWords = () => {
-      kitchen.actions.toggleAtStart()
+      console.log(channel)
+      getChannelMessages(channel)
+      let originalFile = {}
+      setTimeout(() => {
+         originalFile = session.data.oauthResponseObject
+         console.log(originalFile)
+         let data = wordItems(channel, 30, originalFile)
+         kitchen.actions.setDataDnD(data)
+         
+         kitchen.actions.toggleAtStart()
+      }, 2000)
    }
 
    return (

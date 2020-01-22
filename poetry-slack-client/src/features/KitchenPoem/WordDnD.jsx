@@ -9,9 +9,10 @@ import wordItems from "./wordItems";
 import { observer } from "mobx-react-lite";
 
 const WordDnD = observer(() => {
+    const { session } = useStores()
     const { kitchen } = useStores()
-    const selectedChannel = kitchen.data.selectedChannel
-    const [ dataDnD, setDataDnD ] = useState(() => wordItems(selectedChannel, 30))
+    const [ dataDnD, setDataDnD ] = useState(kitchen.data.dataDnD)
+    let channel = kitchen.data.selectedChannelID
     // let dataDnD = kitchen.data.dataDnD
     // let words = wordItems()
     // dataDnD = kitchen.actions.setDataDnD(words)
@@ -93,12 +94,25 @@ const WordDnD = observer(() => {
         let tempPoem = contents.join(' ')
         tempPoem = tempPoem.charAt(0).toUpperCase() + tempPoem.slice(1)
         setPoem(tempPoem)
-        setIsGenerated('true')
+        setIsGenerated(true)
+    }
+
+    const refreshWords = () => {
+        let originalFile = session.data.oauthResponseObject
+        console.log(originalFile)
+        let data = wordItems(channel, 30, originalFile)
+        kitchen.actions.setDataDnD(data)
+
+        setDataDnD(data)
+        setIsGenerated(false)
     }
 
     return (
-        <div>
+       <div>
+            <div>
             <button className="button" onClick={generatePoem}>Generate Poem</button>
+            <button className="button" onClick={refreshWords}>Refresh</button>
+            </div>
             {isGenerated ? <div className={style.generatedPoem}>{poem}</div> : null} 
             <DragDropContext
                 // onDragStart
