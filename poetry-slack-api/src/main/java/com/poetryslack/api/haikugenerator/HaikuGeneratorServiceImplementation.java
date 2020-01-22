@@ -52,8 +52,8 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
 
     private String stripOfDigitsAndPunctuationCharactersAndMakeLowerCase(String text) {
 
-        return text.replaceAll("\\p{Punct}", "")
-                .replaceAll("\\d", "")
+        return text.replaceAll("\\p{Punct}", " ")
+                .replaceAll("\\d", " ")
                 .toLowerCase();
 
     }

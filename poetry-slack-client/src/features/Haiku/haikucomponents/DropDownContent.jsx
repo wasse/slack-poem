@@ -48,11 +48,12 @@ const DropDownContent = observer(props => {
             <div className={styledSubmit}>
                <button
                   type="submit"
-                  disabled={!haiku.data.title.length}
+                  // disabled={!haiku.data.title.length}
+                  disabled={true}
                   className="button is-primary"
                   onClick={() => handleSave()}
                >
-                  Save
+                  Save (TODO)
                </button>
             </div>
             <hr className="dropdown-divider" />

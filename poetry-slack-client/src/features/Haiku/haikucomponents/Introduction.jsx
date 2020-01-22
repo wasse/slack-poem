@@ -16,7 +16,7 @@ const Introduction = observer((...other) => {
             <p className="subtitle">
                Here you can generate a haiku from selected parts of the
                workspace. It might not turn out to be according to all the
-               rules, but entertaining nonetheless.
+               rules, but hopefully entertaining.
             </p>
             <p>The channel you choose will set the tone of the poem.</p>
             <p className="content is-bold">
