@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react'
 import { observer } from 'mobx-react'
 import {
    generateHaiku,
-   getChannelResponseObjectAsIdAndNameList,
+   getChannelResponseObjectAsIdAndNameList
 } from '../haikuFunctions'
 import { getChannelMessages } from '../../../api-calls/slack-api-calls'
 import { useStores } from '../../../custom-hooks/use-stores'
-import styles from '../Haiku.module.scss'
+// import styles from '../Haiku.module.scss'
 import '../Haiku.module.scss'
 
 const HaikuModal = observer(({ showCard, hide, title }) => {
@@ -21,20 +21,18 @@ const HaikuModal = observer(({ showCard, hide, title }) => {
    )
 
    const radioButtons = chnl.current.map(ch => (
-      <li key={ch.id}>
-         <label className="radio">
-            <input
-               checked={radioChecked === ch.id}
-               type="radio"
-               name={ch.name}
-               value={ch.id}
-               onChange={() => onRadioButtonChange(ch.id, ch.name)}
-               onClick={() => setRadioChecked(ch.id)}
-            />
-            {'  '}
-            {ch.name}
-         </label>
-      </li>
+      <div className="field" key={ch.id}>
+         <input
+            checked={radioChecked === ch.id}
+            type="radio"
+            name={ch.name}
+            value={ch.id}
+            onChange={() => onRadioButtonChange(ch.id, ch.name)}
+            onClick={() => setRadioChecked(ch.id)}
+         />
+         {'  '}
+         {ch.name}
+      </div>
    ))
 
    const onRadioButtonChange = (id, name) => {
@@ -76,9 +74,7 @@ const HaikuModal = observer(({ showCard, hide, title }) => {
             </header>
             <section className="modal-card-body">
                <div className="card-content">
-                  <div className="control">
-                     <ul className={styles.radiolist}>{radioButtons}</ul>
-                  </div>
+                  <div className="control is-vertical">{radioButtons}</div>
                </div>
             </section>
             <footer className="modal-card-foot">

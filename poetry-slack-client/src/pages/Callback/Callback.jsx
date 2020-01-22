@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useStores } from '../../custom-hooks/use-stores'
 import { fetchAndSetAccessToken } from '../../api-calls/slack-api-calls'
 import { Redirect } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { observer } from 'mobx-react'
 
-const Callback = () => {
+const Callback = observer(() => {
    console.log('Callback rendering')
    const { session } = useStores()
 
@@ -18,19 +18,18 @@ const Callback = () => {
       fetchAndSetAccessToken()
    }, [])
 
-   console.log('Is authenticated ' + session.data.isAuthenticated)
-
    const Component = session.data.isAuthenticated ? (
       <div>
          <Redirect to="/home" />
       </div>
    ) : (
       <div>
-         <FontAwesomeIcon icon="spinner" />
+         Waiting for isAuthenticated
+         {/* <Redirect to="/" /> */}
       </div>
    )
 
    return Component
-}
+})
 
 export default Callback

@@ -25,6 +25,10 @@ const HaikuDisplay = observer((...props) => {
             {haiku.data.haiku[2]}
          </div>
          <p>{haiku.data.errorMessage}</p>
+         <p>
+            Error occured when generating from the{' '}
+            {haiku.data.chosenChannelName} channel
+         </p>
       </div>
    ) : (
       <div className="tile is-vertical is-centered">
@@ -41,7 +45,7 @@ const HaikuDisplay = observer((...props) => {
             className={styledButton}
             onClick={() => fetchGeneratedHaiku(haiku.data.text)}
          >
-            Try again
+            Again!
          </button>
          <SaveDropDown />
       </div>
