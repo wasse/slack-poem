@@ -18,26 +18,33 @@ const KitchenPoem = observer(() => {
    const dataDnD = kitchen.data.dataDnD
    let atStart = kitchen.data.atStart
    let showCard = kitchen.data.showCard
+   let isSelected = kitchen.data.channelIsSelected
 
    // const { showCard, toggleModal } = ModalCardStart()
    const [ channelNotChosen, setChannelChosen ] = useState(true)
 
    function toggleCard() {
-      setChannelChosen(!channelNotChosen)
+      kitchen.actions.toggleShowCard()
+      if(isSelected){
+         kitchen.actions.toggleChannelIsSelected()
+      }
     }
 
    const getWords = () => {
-      console.log(channel)
-      getChannelMessages(channel)
-      let originalFile = {}
-      setTimeout(() => {
-         originalFile = session.data.oauthResponseObject
-         console.log(originalFile)
-         let data = wordItems(channel, 30, originalFile)
-         kitchen.actions.setDataDnD(data)
-         
-         kitchen.actions.toggleAtStart()
-      }, 2000)
+      if(isSelected) {
+         console.log(channel)
+         getChannelMessages(channel)
+         let originalFile = {}
+         setTimeout(() => {
+            originalFile = session.data.oauthResponseObject
+            console.log(originalFile)
+            let data = wordItems(channel, 30, originalFile)
+            kitchen.actions.setDataDnD(data)
+            
+            kitchen.actions.toggleAtStart()
+         }, 1000)
+         kitchen.actions.toggleChannelIsSelected()
+      }
    }
 
    return (
@@ -52,7 +59,7 @@ const KitchenPoem = observer(() => {
          </button>
          <Modal
             showCard={showCard}
-            hide={kitchen.actions.toggleShowCard}
+            hide={toggleCard}
             title={'Choose a Channel'}
             getWords={getWords}
          >

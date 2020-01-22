@@ -4,37 +4,37 @@ import { getChannelMessages } from '../../api-calls/slack-api-calls'
 import  sessionstore  from '../../stores/SessionStore'
 
 const getWordList = (selectedChannel, limit, originalFile) => {
-    console.log(selectedChannel)
-    console.log(originalFile)
     
     let mappedFile
     if(originalFile.ok) {
         mappedFile = originalFile.messages.map(obj => obj.text)
     }
-    let joinedFiltered = mappedFile.filter(a => {
+    let mappedFiltered= mappedFile.filter(a => {
         return !(a.includes('<')) && !(a.includes('http'))
     })
-    console.log(joinedFiltered)
-    let mappedFileString = JSON.stringify(joinedFiltered)
-    console.log(mappedFileString)
-    let joined = mappedFile.join(', ')
-    console.log(joined)
+    console.log(mappedFiltered)
+    let mappedFileString = JSON.stringify(mappedFiltered)
+    console.log(mappedFileString) // 
+    let joined = mappedFiltered.join(', ')
+    console.log(joined) // 
     
-    
-    const reg = /[,\.?\!]+/
-    let newArray = joined.split(/\s/)
-    .map(word => word.replace(reg, ''))
-    .map(word => {
+    const reg = /\s*[,\.?\!\ :\(\)\{\}\"\[\]]+\s*/
+    let joinedArray = joined.split(reg).map(word => {
         if(word !== "I") { return word.toLowerCase() } 
         else { return word }
     })
-    console.log(newArray)
+    console.log(joinedArray)
+
+    let filteredJoined = joinedArray.filter(word => 
+        !(word.includes('&')) && !(word.includes('://'))
+    )
     
-    let shuffledArray = newArray.sort(() => Math.random() - 0.5)
+    let shuffledArray = filteredJoined.sort(() => Math.random() - 0.5)
     
     if(shuffledArray.length > limit) {
         shuffledArray = shuffledArray.slice(0, limit-1)
     }
+    // shuffledArray.push('? ', '! ', ', ', '. ')
     
     return shuffledArray
 }

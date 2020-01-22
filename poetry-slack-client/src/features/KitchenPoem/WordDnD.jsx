@@ -101,6 +101,7 @@ const WordDnD = observer(() => {
         let originalFile = session.data.oauthResponseObject
         console.log(originalFile)
         let data = wordItems(channel, 30, originalFile)
+        console.log(data)
         kitchen.actions.setDataDnD(data)
 
         setDataDnD(data)

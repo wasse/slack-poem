@@ -5,6 +5,7 @@ import wordItems from '../features/KitchenPoem/wordItems'
 const KitchenPoemStore = {
     data: observable({
         selectedChannelID: '',
+        channelIsSelected: false,
         atStart: true,
         showCard: false,
         dataDnD: {},
@@ -12,6 +13,9 @@ const KitchenPoemStore = {
     actions: {
         setChannelID: action(channel => {
             KitchenPoemStore.data.selectedChannelID = channel
+        }),
+        toggleChannelIsSelected: action(() => {
+            KitchenPoemStore.data.channelIsSelected = !(KitchenPoemStore.data.channelIsSelected)
         }),
         toggleAtStart: action(() => {
             KitchenPoemStore.data.atStart = !(KitchenPoemStore.data.atStart)

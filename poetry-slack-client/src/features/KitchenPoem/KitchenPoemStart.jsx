@@ -12,11 +12,15 @@ const KitchenPoemStart = observer(() => {
     const { kitchen } = useStores()
     const channelsResponseObject = session.data.channelsResponseObject
     const channels = getChannelList(channelsResponseObject)
+    let isSelected = kitchen.data.channelIsSelected
 
     const selectChannel = (e) => {
         let channelName = e.target.value
         let selected = channels.filter(channel => channel.name === channelName )
         kitchen.actions.setChannelID(selected[0].id)
+        if(!isSelected) { 
+            kitchen.actions.toggleChannelIsSelected() 
+        }
     }
 
     return (
