@@ -56,11 +56,9 @@ export const getChannels = () => {
          // Test hämta meddelanden från kanal ->
          // console.log(data)
          // console.log(data.channels[0].id)
-         /* commented out by Satomi */
-         // getChannelMessages(
-         //    SessionStore.data.channelsResponseObject.channels[0].id
-         // )
-         /* */
+         getChannelMessages(
+            SessionStore.data.channelsResponseObject.channels[0].id
+         )
          // postMessageInChannel("Här kommer det ett meddelande", SessionStore.data.channelsResponseObject.channels[0].id)
       })
 }
@@ -78,11 +76,12 @@ export const getChannelMessages = channelId => {
    fetch(getChannelMessagesURI)
       .then(response => response.json())
       .then(data => {
-         // console.log(data)
+         console.log(data) 
          // console.log(data.messages[0].text)
          SessionStore.actions.setoauthResponseObject(data)
          // Test
          // wordList()
+         return data
       })
 }
 
