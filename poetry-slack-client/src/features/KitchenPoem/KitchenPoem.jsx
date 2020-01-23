@@ -10,6 +10,7 @@ import KitchenPoemChoose from './KitchenPoemChoose'
 import WordDnD from './WordDnD'
 import wordItems from './wordItems'
 import { getChannelMessages } from '../../api-calls/slack-api-calls'
+import style from 'react-syntax-highlighter/dist/esm/styles/hljs/agate'
 
 const KitchenPoem = observer(() => {
    const { session } = useStores()
@@ -49,22 +50,24 @@ const KitchenPoem = observer(() => {
 
    return (
       atStart ? (
-      <div className="column">
-         <h2 className="title">Kitchen Poem</h2>
+      <div className={"column tile is-ancestor is-12 " + style.ancestor}>
+         <div className="tile is-parent box is-vertical">
+            <h2 className="title tile is-child">Kitchen Poem</h2>
 
-         <h3 className="subtitle">What is Kitchen Poem?</h3>
+            <h3 className="subtitle tile is-child">What is Kitchen Poem?</h3>
 
-         <button className="button is-primary" onClick={kitchen.actions.toggleShowCard}>
-            Start
-         </button>
-         <Modal
-            showCard={showCard}
-            hide={toggleCard}
-            title={'Choose a Channel'}
-            getWords={getWords}
-         >
-            <KitchenPoemStart />
-         </Modal>
+            <button className="button is-primary" onClick={kitchen.actions.toggleShowCard}>
+               Start
+            </button>
+            <Modal
+               showCard={showCard}
+               hide={toggleCard}
+               title={'Choose a Channel'}
+               getWords={getWords}
+            >
+               <KitchenPoemStart />
+            </Modal>
+         </div>
       </div>
    ) : (
       <KitchenPoemChoose />

@@ -22,7 +22,7 @@ const KitchenPoemChoose = observer(( obj ) => {
     return (
         <div>
             {/* <button onClick={goToKitchen}>Close</button> */}
-            <Link to={`${url}/kitchen-poem`} onClick={goToKitchen}>Kitchen Poem</Link>
+            <Link to={`${url}/kitchen-poem`} onClick={goToKitchen}>← Kitchen Poem</Link>
             <WordDnD /> 
         </div>
         )

@@ -9,7 +9,7 @@ import KitchenPoemStore from '../../stores/KitchenPoemStore'
 
 const ColumnDnD = observer(({ key, column, items }) => {
     return (
-        <div className={style.columnDnD}>
+        <div className={style.columnDnD + " has-background-grey-darker"}>
             <h2 className={style.columnTitle}>{column.title}</h2>
             <Droppable droppableId={column.id}>
                 {(provided) => (

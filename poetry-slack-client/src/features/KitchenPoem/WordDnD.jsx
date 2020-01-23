@@ -111,8 +111,8 @@ const WordDnD = observer(() => {
     return (
        <div>
             <div>
-            <button className="button" onClick={generatePoem}>Generate Poem</button>
-            <button className="button" onClick={refreshWords}>Refresh</button>
+            <button className={style.button + " button is-primary"} onClick={generatePoem}>Generate Poem</button>
+            <button className={style.button + " button is-outlined"} onClick={refreshWords}>Refresh</button>
             </div>
             {isGenerated ? <div className={style.generatedPoem}>{poem}</div> : null} 
             <DragDropContext
