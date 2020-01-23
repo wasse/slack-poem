@@ -50,15 +50,16 @@ const KitchenPoem = observer(() => {
 
    return (
       atStart ? (
-      <div className={"column tile is-ancestor is-12 " + style.ancestor}>
+      <div className={"tile is-ancestor is-12 " + style.ancestor}>
          <div className="tile is-parent box is-vertical">
             <h2 className="title tile is-child">Kitchen Poem</h2>
 
             <h3 className="subtitle tile is-child">What is Kitchen Poem?</h3>
-
-            <button className="button is-primary" onClick={kitchen.actions.toggleShowCard}>
-               Start
-            </button>
+            <div className="tile is-child">
+               <button className={style.startButton + " button is-primary"} onClick={kitchen.actions.toggleShowCard}>
+                  Start
+               </button>
+            </div>
             <Modal
                showCard={showCard}
                hide={toggleCard}
