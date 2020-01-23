@@ -12,7 +12,11 @@ const styledAncestor = clsx(
 const About = () => {
    return (
       <div className={styledAncestor}>
-         <HowTo />
+         <div className='tile is-parent'>
+            <div className='tile is-child box'>
+            <HowTo />
+            </div>
+         </div>
       </div>
    )
 }
