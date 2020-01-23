@@ -1,5 +1,6 @@
 package com.poetryslack.api.haikugenerator;
 
+import com.poetryslack.api.exceptions.HaikuGeneratorException;
 import com.poetryslack.api.services.HaikuGeneratorService;
 
 import javax.ejb.Stateless;
@@ -19,19 +20,25 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
         String strippedText = stripOfDigitsAndPunctuationCharactersAndMakeLowerCase(text);
         Scanner scanner = new Scanner(strippedText);
         String[] generatedHaiku = null;
+        int wordCount = 0;
 
         if (text.length() == 0) {
-            throw new HaikuGeneratorException("Not enough words exists to generate a haiku from");
+            throw new HaikuGeneratorException("The provided text is empty. This generator only accepts a word count of 15 or more.");
         }
 
         while (scanner.hasNext()) {
             String wordFromTextArgument = scanner.next();
+            wordCount += 1;
             int value = syllableCounter.countSyllables(wordFromTextArgument);
             allWordsSortedBySyllableCountKeys.computeIfAbsent(value, k -> new ArrayList<String>()).add(wordFromTextArgument);
         }
 
+        if (wordCount < 15) {
+            throw new HaikuGeneratorException("The provided text does not have enough words. This generator accepts a word count of 15 or more.");
+        }
+
         try {
-            generatedHaiku = new String[]{buildHaikuRow(5), buildHaikuRow(7), buildHaikuRow(5)};
+            generatedHaiku = new String[]{getHaikuRow(5), getHaikuRow(7), getHaikuRow(5)};
         } catch (HaikuGeneratorException h) {
             throw new HaikuGeneratorException(h.getMessage());
         } finally {
@@ -45,78 +52,82 @@ public class HaikuGeneratorServiceImplementation implements HaikuGeneratorServic
 
     private String stripOfDigitsAndPunctuationCharactersAndMakeLowerCase(String text) {
 
-        return text.replaceAll("\\p{Punct}", "")
-                .replaceAll("\\d", "")
+        return text.replaceAll("\\p{Punct}", " ")
+                .replaceAll("\\d", " ")
                 .toLowerCase();
 
     }
 
-    private String buildHaikuRow(int amountOfsyllablesInRow) throws HaikuGeneratorException {
+    private String getHaikuRow(int amountOfsyllablesInRow) throws HaikuGeneratorException {
 
-        List<String> wordsConnectedToASyllableCountKey = null;
         int[][] combinationsOfFiveOrSeven = amountOfsyllablesInRow == 5 ? combinationsOfFive : combinationsOfSeven;
-        int[] aRandomlySelectedCombinationOfFiveOrSeven = shuffleArray(combinationsOfFiveOrSeven[getRandomNumber(combinationsOfFiveOrSeven.length)]);
-        StringBuilder row = new StringBuilder();
-        String oneWord = "";
+        int randomIndex = getRandomNumber(combinationsOfFiveOrSeven.length);
+        int[] randomComboOfFiveOrSeven = shuffleArray(combinationsOfFiveOrSeven[randomIndex]);
+        String row = "";
 
-            for (int i = 0; i < aRandomlySelectedCombinationOfFiveOrSeven.length; i++) {
-
-                try {
-                    wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys
-                            .get(aRandomlySelectedCombinationOfFiveOrSeven[i]);
-                    oneWord = wordsConnectedToASyllableCountKey
-                            .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
-                    row.append(oneWord + " ");
-
-                } catch (NullPointerException e) {
-                    int key = 1;
-                    for (int y = 0; y < combinationsOfFiveOrSeven.length; y++) {
-                        try {
-                            wordsConnectedToASyllableCountKey = allWordsSortedBySyllableCountKeys
-                                                                .get(key);
-                            Collections.shuffle(wordsConnectedToASyllableCountKey);
-                            oneWord = wordsConnectedToASyllableCountKey
-                                    .get(getRandomNumber(wordsConnectedToASyllableCountKey.size()));
-                            row.append(oneWord + " ");
-                            key += 1;
-                        } catch (NullPointerException n) { continue; }
-                    }
-                }
-
-            }
-
-        if (row.length() != 0) {
-            return row.toString().substring(0,1).toUpperCase() + row.substring(1).trim();
+        if (trueIfAllValuesInArrayExistAsMapKeys(randomComboOfFiveOrSeven)) {
+            row = assembleRow(randomComboOfFiveOrSeven);
         } else {
-            throw new HaikuGeneratorException("Haiku can not be created from the provided text");
+            shuffleMultidimensionalArray(combinationsOfFiveOrSeven);
+            for (int[] combo : combinationsOfFiveOrSeven) {
+                if (trueIfAllValuesInArrayExistAsMapKeys(combo)) {
+                    row = assembleRow(combo);
+                    break;
+                }
+            }
         }
 
+        if (row.length() > 1) {
+            return row.substring(0,1).toUpperCase() + row.substring(1).trim();
+        } else {
+            throw new HaikuGeneratorException("Haiku can not be created from the provided text.");
+        }
+    }
+
+    private String assembleRow(int[] combo) {
+        StringBuilder rowWords = new StringBuilder();
+        List<String> wordsListConnectedToKey = null;
+        for (int key : combo) {
+            wordsListConnectedToKey = allWordsSortedBySyllableCountKeys.get(key);
+            Collections.shuffle(wordsListConnectedToKey);
+            int randomIndex = getRandomNumber(wordsListConnectedToKey.size());
+            rowWords.append(wordsListConnectedToKey.get(randomIndex)).append(" ");
+        }
+        return rowWords.toString();
+    }
+
+    private boolean trueIfAllValuesInArrayExistAsMapKeys(int[] values) {
+        int count = 0;
+        for (int x : values) {
+            if (allWordsSortedBySyllableCountKeys.containsKey(x)) {
+                count += 1;
+            }
+        }
+        return count == values.length;
     }
 
     private int[] shuffleArray(int[] array) {
-
         for (int i = 0; i < array.length; i++) {
             int randomIndex = getRandomNumber(array.length);
             int temp = array[randomIndex];
             array[randomIndex] = array[i];
             array[i] = temp;
         }
-
         return array;
+    }
 
+    private int[][] shuffleMultidimensionalArray(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            int randomIndex = getRandomNumber(array.length);
+            int[] temp = array[randomIndex];
+            array[randomIndex] = array[i];
+            array[i] = temp;
+        }
+        return array;
     }
 
     private int getRandomNumber(int range) { return (int) (Math.random() * range); }
-
 }
-
-
-
-
-
-
-
-
 
 
 

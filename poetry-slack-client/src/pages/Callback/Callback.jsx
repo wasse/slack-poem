@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useStores } from '../../custom-hooks/use-stores'
-import { fetchAndSetAccessToken, getChannelMessages } from '../../api-calls/slack-api-calls'
+import { fetchAndSetAccessToken } from '../../api-calls/slack-api-calls'
 import { Redirect } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 
-const Callback = () => {
-   console.log("Callback rendering")
+const Callback = observer(() => {
+   console.log('Callback rendering')
    const { session } = useStores()
 
    const urlParams = new URLSearchParams(window.location.search)
@@ -15,11 +14,9 @@ const Callback = () => {
    session.actions.setCodeParam(myParam)
    console.log('From session data ' + session.data.codeParam)
 
-   useEffect(() => {fetchAndSetAccessToken()}, [])
-
-   console.log('Is authenticated ' + session.data.isAuthenticated)
-
-   // getChannelMessages()
+   useEffect(() => {
+      fetchAndSetAccessToken()
+   }, [])
 
    const Component = session.data.isAuthenticated ? (
       <div>
@@ -27,11 +24,12 @@ const Callback = () => {
       </div>
    ) : (
       <div>
-         <FontAwesomeIcon icon="fa-spinner" />
+         Waiting for isAuthenticated
+         {/* <Redirect to="/" /> */}
       </div>
    )
 
    return Component
-}
+})
 
 export default Callback

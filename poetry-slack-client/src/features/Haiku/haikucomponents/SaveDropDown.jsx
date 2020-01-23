@@ -27,7 +27,7 @@ const SaveDropDown = props => {
                   onClick={() => toggleActive(!isActive)}
                >
                   <div className="subtitle">
-                     Add this Haiku to the archive{' '}
+                     Save this or post as a message to slack{' '}
                      <FontAwesomeIcon className={styles.icon} icon="save" />
                      <FontAwesomeIcon
                         className={styles.icon}

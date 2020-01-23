@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RadioButton = ({ fieldLabel, children }) => (
+const RadioButtonField = ({ fieldLabel, children }) => (
     <div className="field is-horizontal">
         <div className="field-label">
         <label htmlFor="" className="label">
@@ -20,4 +20,4 @@ const RadioButton = ({ fieldLabel, children }) => (
 )
 
 
-export default RadioButton
+export default RadioButtonField

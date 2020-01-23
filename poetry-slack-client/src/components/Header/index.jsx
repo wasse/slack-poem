@@ -18,8 +18,8 @@ const Header = observer(() => {
                      session.actions.setIsHomePage(true)
                   }}
                >
-                  <h1 className="title is-bold is-1">Poetry-Slack</h1>
-                  <h2 className="subtitle">Coming soon!</h2>
+                  <h1 className="title is-bold is-1">Poetry Slack</h1>
+                  <h2 className="subtitle">The workspace poetry generator</h2>
                </Link>
             </div>
          </div>

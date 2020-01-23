@@ -3,6 +3,7 @@ import styles from '../Haiku.module.scss'
 import clsx from 'clsx'
 import { useStores } from '../../../custom-hooks/use-stores'
 import { observer } from 'mobx-react'
+import { formatHaikuAndPostAsMessageInChannel } from '../haikuFunctions'
 
 const styledDropDownMenuContent = clsx(
    'dropdown-content',
@@ -19,6 +20,15 @@ const DropDownContent = observer(props => {
       haiku.actions.setTitle(e.target.value)
    }
 
+   const handlePost = () => {
+      formatHaikuAndPostAsMessageInChannel()
+   }
+
+   const handleSave = () => {
+      // TODO: .....
+      console.log('Save clicked')
+   }
+
    return (
       <div className={styledDropDownMenuContent}>
          <div className={styledField}>
@@ -32,16 +42,29 @@ const DropDownContent = observer(props => {
                />
             </div>
             <p className="help">
-               The haiku needs a title before you can submit it.
+               The haiku needs a title before you can save or post it.
             </p>
+            <hr className="dropdown-divider" />
+            <div className={styledSubmit}>
+               <button
+                  type="submit"
+                  // disabled={!haiku.data.title.length}
+                  disabled={true}
+                  className="button is-primary"
+                  onClick={() => handleSave()}
+               >
+                  Save (TODO)
+               </button>
+            </div>
             <hr className="dropdown-divider" />
             <div className={styledSubmit}>
                <button
                   type="submit"
                   disabled={!haiku.data.title.length}
                   className="button is-primary"
+                  onClick={() => handlePost()}
                >
-                  Submit
+                  Post
                </button>
             </div>
          </div>

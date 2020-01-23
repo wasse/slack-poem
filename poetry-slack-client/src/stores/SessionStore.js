@@ -10,6 +10,7 @@ const SessionStore = {
       channel: 'CPSQPDN3V',
       oauthResponseObject: null,
       channelsResponseObject: {},
+      oauthAndUserInfoResponseObject: {}
    }),
    actions: {
       setIsAuthenticated: action(auth => {
@@ -31,13 +32,16 @@ const SessionStore = {
          SessionStore.data.channel = channel
       }),
       setoauthResponseObject: action(oauthObject => {
-         SessionStore.data.oauthResponseObject = oauthObject 
+         SessionStore.data.oauthResponseObject = oauthObject
       }),
       setChannelsResponseObject: action(channelsObject => {
          SessionStore.data.channelsResponseObject = channelsObject
+      }),
+      setOauthUserInfoResponseObject: action(info => {
+         SessionStore.data.oauthAndUserInfoResponseObject = info
       })
    },
-   computed: {},
+   computed: {}
 }
 
 export default SessionStore

@@ -1,8 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Button } from '../../../components'
 import ModalCardStart from '../../../components/Modal/ModalCardStart'
-import Modal from '../../../components/Modal/Modal'
+import HaikuModal from './HaikuModal'
 import styles from '../Haiku.module.scss'
 import '../Haiku.module.scss'
 import { observer } from 'mobx-react'
@@ -17,12 +16,9 @@ const Introduction = observer((...other) => {
             <p className="subtitle">
                Here you can generate a haiku from selected parts of the
                workspace. It might not turn out to be according to all the
-               rules, but entertaining nonetheless.
+               rules, but hopefully entertaining.
             </p>
-            <p>
-               The channel/channels/conversations you choose will set the tone
-               of the poem.
-            </p>
+            <p>The channel you choose will set the tone of the poem.</p>
             <p className="content is-bold">
                "A traditional Japanese haiku is a three-line poem with seventeen
                syllables, written in a 5/7/5 syllable count. Often focusing on
@@ -41,7 +37,7 @@ const Introduction = observer((...other) => {
                Start generating!
             </button>
          </div>
-         <Modal
+         <HaikuModal
             showCard={showCard}
             hide={toggleModal}
             title={'Choose a Channel'}
