@@ -10,7 +10,7 @@ const postKitchenPoem = (poem) => {
             type: 'section',
             text: {
                 type: 'mrkdwn',
-                text: poem
+                text: '>' + poem
             }
         },
         {
