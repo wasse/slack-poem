@@ -4,10 +4,11 @@ import { observer } from 'mobx-react'
 
 import getWordList from './getWordList'
 
-const wordItems = () => {
+const wordItems = (selectedChannel, limit, originalFile) => {
     
-    let shuffledArray = getWordList()
+    let shuffledArray = getWordList(selectedChannel, limit, originalFile)
     // ["red", "hat", "hot", "pink"]
+    console.log(shuffledArray)
     
     // ojbect for 'items'
     let itemObject = {} 

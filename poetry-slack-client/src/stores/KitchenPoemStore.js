@@ -4,14 +4,18 @@ import wordItems from '../features/KitchenPoem/wordItems'
 
 const KitchenPoemStore = {
     data: observable({
-        selectedChannel: '',
+        selectedChannelID: '',
+        channelIsSelected: false,
         atStart: true,
         showCard: false,
         dataDnD: {},
     }),
     actions: {
-        selectChannel: action(channel => {
-            KitchenPoemStore.data.selectedChannel = channel
+        setChannelID: action(channel => {
+            KitchenPoemStore.data.selectedChannelID = channel
+        }),
+        toggleChannelIsSelected: action(() => {
+            KitchenPoemStore.data.channelIsSelected = !(KitchenPoemStore.data.channelIsSelected)
         }),
         toggleAtStart: action(() => {
             KitchenPoemStore.data.atStart = !(KitchenPoemStore.data.atStart)
@@ -19,8 +23,8 @@ const KitchenPoemStore = {
         toggleShowCard: action(() => {
             KitchenPoemStore.data.showCard = !(KitchenPoemStore.data.showCard)
         }),
-        setDataDnD: action(() => {
-            return KitchenPoemStore.data.dataDnD = wordItems()
+        setDataDnD: action((data) => {
+            return KitchenPoemStore.data.dataDnD = data
         }),
         replaceColumnData: action((newColumn) => {
             const dataDnD = KitchenPoemStore.data.dataDnD

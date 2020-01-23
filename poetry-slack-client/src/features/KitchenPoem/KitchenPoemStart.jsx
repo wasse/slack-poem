@@ -5,25 +5,33 @@ import { observer } from 'mobx-react'
 import RadioButtonField from '../../components/RadioButton/RadioButtonField'
 import RadioButton from '../../components/RadioButton/RadioButton'
 import { useStores } from '../../custom-hooks/use-stores'
+import getChannelList from './getChannelList'
 
 const KitchenPoemStart = observer(() => {
+    const { session } = useStores()
     const { kitchen } = useStores()
+    const channelsResponseObject = session.data.channelsResponseObject
+    const channels = getChannelList(channelsResponseObject)
+    let isSelected = kitchen.data.channelIsSelected
 
     const selectChannel = (e) => {
-        kitchen.actions.selectChannel(e.target.value)
+        let channelName = e.target.value
+        let selected = channels.filter(channel => channel.name === channelName )
+        kitchen.actions.setChannelID(selected[0].id)
+        if(!isSelected) { 
+            kitchen.actions.toggleChannelIsSelected() 
+        }
     }
-
-    let channels = [ "general", "random", "ideas" ]
 
     return (
         <div>
             <h3>From where do you want to fetch the words?</h3>
 
             <RadioButtonField>
-                {channels.map((channel, i) => 
-                    <div key={i}>
+                {channels.map((channel) => 
+                    <div key={channel.id}>
                         <RadioButton 
-                            value={channel}
+                            value={channel.name}
                             name="channel" 
                             onChange={selectChannel}
                         ></RadioButton>
