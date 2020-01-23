@@ -9,6 +9,7 @@ const HaikuStore = {
       errorMessage: '',
       chosenChannelName: '',
       chosenChannelId: '',
+      haikuIsLoading: false
    }),
    actions: {
       setHaiku: action(haiku => {
@@ -32,8 +33,11 @@ const HaikuStore = {
       setChosenChannelId: action(id => {
          HaikuStore.data.chosenChannelId = id
       }),
+      setHaikuIsLoading: action(loading => {
+         HaikuStore.data.haikuIsLoading = loading
+      })
    },
-   computed: {},
+   computed: {}
 }
 
 export default HaikuStore

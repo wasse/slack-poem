@@ -1,5 +1,6 @@
 import SessionStore from '../stores/SessionStore'
 import { CLIENT_ID, CLIENT_SECRET } from '../SECRETS'
+import { trackPromise } from 'react-promise-tracker'
 
 // A list of all channels:
 // https://slack.com/api/channels.list
@@ -75,15 +76,17 @@ export const getChannelMessages = channelId => {
       channelId
    // SessionStore.data.channel
 
-   fetch(getChannelMessagesURI)
-      .then(response => response.json())
-      .then(data => {
-         // console.log(data)
-         // console.log(data.messages[0].text)
-         SessionStore.actions.setoauthResponseObject(data)
-         // Test
-         // wordList()
-      })
+   trackPromise(
+      fetch(getChannelMessagesURI)
+         .then(response => response.json())
+         .then(data => {
+            // console.log(data)
+            // console.log(data.messages[0].text)
+            SessionStore.actions.setoauthResponseObject(data)
+            // Test
+            // wordList()
+         })
+   )
 }
 
 export const postMessageInChannel = (message, channel) => {

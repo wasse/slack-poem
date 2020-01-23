@@ -5,6 +5,10 @@ import clsx from 'clsx'
 import { observer } from 'mobx-react'
 import { useStores } from '../../../custom-hooks/use-stores'
 import { fetchGeneratedHaiku } from '../../../api-calls/haiku-api-calls'
+// import { Spinner } from '../../../components'
+// import Spinner from '../../../components/Spinners/Spinner'
+// import Loader from 'react-loader-spinner'
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const HaikuDisplay = observer((...props) => {
    const { haiku } = useStores()
@@ -53,3 +57,25 @@ const HaikuDisplay = observer((...props) => {
 })
 
 export default HaikuDisplay
+// {
+//    /* <div className="tile is-vertical is-centered"> */
+// }
+// {
+//    /* </div> */
+// }
+
+// {
+//    /* <div className="spinner">
+//    <Loader
+//       type="Hearts"
+//       color="#b63e29"
+//       height="60"
+//       width="60"
+//       visible={haiku.data.haikuIsLoading}
+//       timeout={2000}
+//    />
+// </div> */
+// }
+// {
+//    /* <Spinner /> */
+// }
