@@ -7,17 +7,13 @@ import ColumnDnD from './ColumnDnD'
 import { useStores } from "../../custom-hooks/use-stores";
 import wordItems from "./wordItems";
 import { observer } from "mobx-react-lite";
+import postKitchenPoem from "./postKitchenPoem";
 
 const WordDnD = observer(() => {
     const { session } = useStores()
     const { kitchen } = useStores()
     const [ dataDnD, setDataDnD ] = useState(kitchen.data.dataDnD)
     let channel = kitchen.data.selectedChannelID
-    // let dataDnD = kitchen.data.dataDnD
-    // let words = wordItems()
-    // dataDnD = kitchen.actions.setDataDnD(words)
-    // console.log(dataDnD)
-    // dataDnD = wordItems()
     console.log(dataDnD)
     const [ poem, setPoem ] = useState('')
     const [ isGenerated, setIsGenerated ] = useState(false)
@@ -97,11 +93,15 @@ const WordDnD = observer(() => {
         setIsGenerated(true)
     }
 
+    const postOnSlack = () => {
+        if(poem){
+            postKitchenPoem(poem)
+        }
+    }
+
     const refreshWords = () => {
         let originalFile = session.data.oauthResponseObject
-        console.log(originalFile)
         let data = wordItems(channel, 30, originalFile)
-        console.log(data)
         kitchen.actions.setDataDnD(data)
 
         setDataDnD(data)
@@ -112,7 +112,8 @@ const WordDnD = observer(() => {
        <div>
             <div>
             <button className={style.button + " button is-primary"} onClick={generatePoem}>Generate Poem</button>
-            <button className={style.button + " button is-outlined"} onClick={refreshWords}>Refresh</button>
+            <button className={style.button + " button is-primary"} onClick={postOnSlack}>POST on Slack</button>
+            <button className={style.button + " button is-primary is-outlined"} onClick={refreshWords}>Refresh</button>
             </div>
             {isGenerated ? <div className={style.generatedPoem}>{poem}</div> : null} 
             <DragDropContext
