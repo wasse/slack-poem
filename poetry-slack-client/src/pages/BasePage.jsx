@@ -18,8 +18,8 @@ const BasePage = observer(() => {
          <Header />
          <div className={styledColumns}>
             <Sidemenu />
-            {session.data.isHomePage && <About />}
             <div className="column">
+               {session.data.isHomePage && <About />}
                <BasePageRoutes />
             </div>
          </div>
