@@ -4,6 +4,7 @@ import SessionStore from '../../stores/SessionStore'
 import HaikuStore from '../../stores/HaikuStore'
 // import { WebClient } from '@slack/web-api'
 import { GENERAL_CHANNEL_WEBHOOK } from '../../SECRETS'
+import { trackPromise } from 'react-promise-tracker'
 
 export const getChannelResponseObjectAsIdAndNameList = () => {
    const idAndNameList = []
@@ -80,18 +81,20 @@ export const formatHaikuAndPostAsMessageInChannel = () => {
 }
 
 const postHaikuWithWebhook = message => {
-   fetch(GENERAL_CHANNEL_WEBHOOK, {
-      body: JSON.stringify({
-         blocks: message,
-         text: 'Time for some poetry-slack'
-      }),
-      headers: {
-         'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      method: 'POST'
-   })
-      .then(resp => resp.text())
-      .then(r => console.log(r))
+   trackPromise(
+      fetch(GENERAL_CHANNEL_WEBHOOK, {
+         body: JSON.stringify({
+            blocks: message,
+            text: 'Time for some poetry-slack'
+         }),
+         headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+         },
+         method: 'POST'
+      })
+         .then(resp => resp.text())
+         .then(r => console.log(r))
+   )
 }
 
 // Saved this for experimenting more with later:

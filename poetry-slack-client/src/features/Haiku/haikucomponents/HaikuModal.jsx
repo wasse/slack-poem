@@ -41,12 +41,14 @@ const HaikuModal = observer(({ showCard, hide, title }) => {
    }
 
    const handleGenerateButtonClick = () => {
+      haiku.actions.setHaikuIsLoading(true)
       haiku.actions.setHaiku([])
       haiku.actions.setTitle('')
       getChannelMessages(chosenChannelId)
       setTimeout(() => {
          generateHaiku(chosenChannelId, chosenChannelName)
-      }, 2000)
+         haiku.actions.setHaikuIsLoading(false)
+      }, 1700)
       hide()
    }
 
