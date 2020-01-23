@@ -3,6 +3,7 @@ import { useStores } from '../../custom-hooks/use-stores'
 import { fetchAndSetAccessToken } from '../../api-calls/slack-api-calls'
 import { Redirect } from 'react-router-dom'
 import { observer } from 'mobx-react'
+import Spinner from '../../components/Spinners/Spinner'
 
 const Callback = observer(() => {
    console.log('Callback rendering')
@@ -24,8 +25,7 @@ const Callback = observer(() => {
       </div>
    ) : (
       <div>
-         Waiting for isAuthenticated
-         {/* <Redirect to="/" /> */}
+         <Spinner />
       </div>
    )
 

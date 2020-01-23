@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './TileGroup.module.scss'
 import clsx from 'clsx'
+import Spinner from '../../components/Spinners/Spinner'
 
 const TileGroup = ({
    className,
    leftContent,
    rightContent,
    displaySecondTileContent,
+   loading,
    ...props
 }) => {
    const styledAncestor = clsx(
@@ -29,6 +31,7 @@ const TileGroup = ({
          <div className={styledParent}>
             <article className={styledChild}>
                <div className="content">
+                  <div>{loading && <Spinner />}</div>
                   {displaySecondTileContent && (
                      <div className="content">{rightContent}</div>
                   )}
@@ -59,14 +62,14 @@ const DefaultContent = () => {
 TileGroup.propTypes = {
    className: PropTypes.string,
    leftContent: PropTypes.object,
-   rightContent: PropTypes.object,
-   displaySecondTileContent: PropTypes.bool,
+   // rightContent: PropTypes.object,
+   displaySecondTileContent: PropTypes.bool
 }
 
 TileGroup.defaultProps = {
    className: '',
    leftContent: <DefaultContent />,
-   rightContent: <DefaultContent />,
+   rightContent: <DefaultContent />
 }
 
 export default TileGroup
