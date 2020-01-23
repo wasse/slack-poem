@@ -18,7 +18,7 @@ const getWordList = (selectedChannel, limit, originalFile) => {
     let joined = mappedFiltered.join(', ')
     console.log(joined) // 
     
-    const reg = /\s*[,\.?\!\ :\(\)\{\}\"\[\]]+\s*/
+    const reg = /\s*[,\.?\!\ \:\(\)\{\}\"\[\]\*]+\s*/
     let joinedArray = joined.split(reg).map(word => {
         if(word !== "I") { return word.toLowerCase() } 
         else { return word }

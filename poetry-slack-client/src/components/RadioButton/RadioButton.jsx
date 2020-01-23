@@ -1,7 +1,5 @@
 import React from 'react'
 
-import RadioButtonSelect from './RadioButtonSelect'
-
 const RadioButton = ({ value, onChange, name, isSelected }) => 
     <label className="radio">
         <input 

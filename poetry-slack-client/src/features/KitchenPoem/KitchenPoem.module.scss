@@ -1,5 +1,10 @@
 @import '../../assets/styles.scss';
 
+.ancestor {
+    background-color: $beige-lighter;
+    border-radius: 1rem;
+ }
+
 .dragdrop {
     margin: 8px;
     display: flex;
@@ -14,10 +19,12 @@
     width: auto;
     display: flex;
     flex-direction: column;
+    background-color: darkgrey;
 }
 
 .columnTitle {
     padding: 8px;
+    color: white;
 }
 
 .itemList {
@@ -40,7 +47,7 @@
     border: 1px solid;
     border-radius: 3px;
     padding: 8px;
-    margin: 5px;
+    margin: 8px;
     background-color: white;
     font-family: "Courier New", Courier, monospace;
     color: black;
@@ -51,4 +58,11 @@
     padding: 8px;
     font-weight: bold;
     font-family: "Courier New", Courier, monospace;
+}
+
+.button {
+    margin: 8px;
+}
+.startButton {
+    margin: auto;
 }

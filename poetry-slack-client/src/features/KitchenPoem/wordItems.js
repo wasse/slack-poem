@@ -9,7 +9,7 @@ const wordItems = (selectedChannel, limit, originalFile) => {
     let shuffledArray = getWordList(selectedChannel, limit, originalFile)
     // ["red", "hat", "hot", "pink"]
     console.log(shuffledArray)
-    
+
     // ojbect for 'items'
     let itemObject = {} 
     for(let i=0;i<shuffledArray.length;i++){
@@ -51,3 +51,41 @@ const wordItems = (selectedChannel, limit, originalFile) => {
 }
 
 export default wordItems
+
+// const dataForDnD = {
+//     // wordItems
+//     items : {
+//         'item-0': {id: "item-0", content: "red"},
+//         'item-1': {id: "item-1", content: "hat"},
+//         'item-2': {id: "item-2", content: "hot"},
+//         'item-3': {id: "item-3", content: "pink"},
+//     },
+//     columns : {
+//         'column-1': {
+//             id: 'column-1',
+//             title: 'List of Words',
+//             itemIDs: [ 'item-0', 'item-1', 'item-2', 'item-3' ]
+//         },
+//         'column-2': {
+// 
+//          }
+//     },
+//     columnOrder: [ 'column-1' ]
+// }
+
+// export default dataForDnD
+
+//***  exampmle of result object ***//
+// const result = {
+//     draggableId: 'item-1',
+//     type: 'TYPE',
+//     reason: 'DROP',
+//     source: {
+//         droppableId: 'column-1',
+//         index:0
+//     },
+//     destination: {
+//         droppableId: 'column-1',
+//         index: 1
+//     }
+// }
